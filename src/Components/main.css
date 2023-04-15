@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiko:wght@400;700&family=Exo+2:wght@700;900&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto:wght@100;300;400;500;700;900&family=Rowdies:wght@300;700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -7,9 +10,136 @@ body{
     min-height: 100vh;
 }
 
+/*------------------ Header -----------------------*/
+
+header{
+    height: 12.5vh;
+    width: 100%;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+header nav{
+    width: 90%;
+    padding: 0 5%;
+    height: 7.5vh;
+    display: flex;
+    align-items: center;
+}
+
+header nav ul{
+    height: 100%;
+    width: 80%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 4fr 1fr;
+}
+
+header nav ul li{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+header nav ul li:nth-child(3){
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.searchBar{
+    border: none;
+    height: 30px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchBar input{
+    width: 90%;
+    height: 100%;
+    z-index: 1;
+    padding: 2.5px 20px;
+    border-radius: 5px;
+}
+
+.searchBar svg{
+    position: absolute;
+    z-index: 2;
+    right: 2%;
+}
+
+#shopCart{
+    width: 25px;
+}
+
+.shopCartContainer{
+    display: flex;
+    justify-content: center;
+}
+
+header .topLiner{
+    height: 5vh;
+    background: black;
+}
+
+.logoContainer{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    height: 50%;
+}
+
+/*-------------------------------------------------*/
+
+.mainAdvertisement{
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url(../Images/Mountains.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.mainAdvertisement h1{
+    min-width: 75%;
+    text-align: center;
+    font-size: 48px;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Amiko',sans-serif;
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.35);
+}
+
+.mainAdvertisement h2{
+    font-size: 36px;
+    color: rgb(216,66,29);
+    font-family: 'Caveat', cursive;
+}
+
+.mainAdvertisement img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .landingPage{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;

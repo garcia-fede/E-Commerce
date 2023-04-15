@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect,useState } from 'react';
-import Card from './Card';
+// import Card from './Card';
 import { db } from "./firebaseConfig"
 import { collection,getDocs,query,where } from "firebase/firestore"
 
@@ -22,9 +22,13 @@ const Landing = () => {
     return (
         <>
             <div className="landingPage">
-                {products.map(product=>{
+                {/* {products.map(product=>{
                     return <Card key={product.id} product={product} />
-                })}
+                })} */}
+                <div className="mainAdvertisement">
+                    <h1>What's new!</h1>
+                    <h2>View the latest styles</h2>
+                </div>
             </div>
         </>
     )
