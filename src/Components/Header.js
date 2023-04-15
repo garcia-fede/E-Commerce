@@ -10,10 +10,16 @@ const Header = () => {
                     <div className="logoContainer">
                         <img src={Logo} className='logo' alt="Logo - Chilly Peaks" />
                     </div>
+                    <input type="checkbox" id="hamburgerCheckbox" />
+                    <label for="hamburgerCheckbox" class="hamburgerButton">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
                     <ul>
-                        <li>Products</li>
-                        <li>About us</li>
-                        <li>Contact</li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Contact</a></li>
                         <li className='searchBar'>
                             <input type="text" placeholder='Search product by name...'/>
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
