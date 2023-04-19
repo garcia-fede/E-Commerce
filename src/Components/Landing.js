@@ -6,10 +6,115 @@ import { collection,getDocs} from "firebase/firestore"
 const Landing = () => {
 
     let [products,setProducts] = useState([])
+    let [addEvent,setAddEvent] = useState(true)
     let [showProducts,setShowProducts] = useState([])
     let [clothesFilter,setClothesFilter] = useState([])
     let [genderFilter,setGenderFilter] = useState([])
     let [colorFilter,setColorFilter] = useState([])
+
+    function updateProducts() {
+        console.log(clothesFilter,genderFilter)
+        let clothes = clothesFilter.length
+        let gender = genderFilter.length
+        let color = colorFilter.length
+        // if(clothes==0&&gender==0&&color==0){
+        //     setShowProducts(products)
+        // }
+        // else{
+        //     let filteredProducts = products.filter(product=>clothesFilter.includes(product.category)&&genderFilter.includes(product.gender))
+        //     setShowProducts(filteredProducts)
+        // }
+    }
+
+    function addFilter (inputValue,category) {
+        let addToFilter
+        switch(category){
+            case 'Clothes':
+                addToFilter = clothesFilter
+                if(!addToFilter.includes(inputValue)){
+                    addToFilter.push(inputValue)
+                }
+                setClothesFilter(addToFilter)
+                break;
+            case 'Gender':
+                addToFilter = genderFilter
+                if(!addToFilter.includes(inputValue)){
+                    addToFilter.push(inputValue)
+                }
+                setGenderFilter(addToFilter)
+                break;
+            case 'Color':
+                addToFilter = colorFilter
+                if(!addToFilter.includes(inputValue)){
+                    addToFilter.push(inputValue)
+                }
+                setColorFilter(addToFilter)
+                break;
+        }
+        updateProducts()
+    }
+
+    function removeFilter (inputValue,category) {
+        let removeFromFilter
+        let index;
+        switch(category){
+            case 'Clothes':
+                removeFromFilter = clothesFilter
+                if(removeFromFilter.includes(inputValue)){
+                    index = removeFromFilter.indexOf(inputValue)
+                    if(index>-1){
+                        removeFromFilter.splice(index, 1)
+                    }
+                }
+                setClothesFilter(removeFromFilter)
+                break;
+            case 'Gender':
+                removeFromFilter = genderFilter
+                if(removeFromFilter.includes(inputValue)){
+                    index = removeFromFilter.indexOf(inputValue)
+                    if(index>-1){
+                        removeFromFilter.splice(index, 1)
+                    }
+                }
+                setGenderFilter(removeFromFilter)
+                break;
+            case 'Color':
+                removeFromFilter = colorFilter
+                break;
+        } 
+        updateProducts()
+    }
+
+    function categoryCheck (input) {
+        let category = input.getAttribute("name")
+        let inputValue = input.getAttribute("value")
+        switch(category){
+            case 'Clothes':
+                if(input.checked){
+                    addFilter(inputValue,category)
+                }else{
+                    removeFilter(inputValue,category)
+                }
+                break;
+            case 'Gender':
+                if(input.checked){
+                    addFilter(inputValue,category)
+                }else{
+                    removeFilter(inputValue,category)
+                }
+                break;
+            case 'Color':
+        }
+    }
+
+    function filterArrays (input) {
+        if(addEvent){
+            input.addEventListener("change",()=>{
+                categoryCheck(input)
+            })
+            setAddEvent(false)
+        } 
+    }
 
     useEffect(()=>{
         const productsCollection = collection(db,"products")
@@ -23,97 +128,8 @@ const Landing = () => {
         }).catch((err)=>{
             console.log(err)
         })
-    },[])
-
-    //Build String with inputs data
-    const buildString = ()=>{
-        console.log(products)
-        let filteredProducts = ""
-        if(clothesFilter.length===0&&genderFilter.length===0&&colorFilter.length===0){
-            filteredProducts=products
-            console.log(filteredProducts)
-            setShowProducts(filteredProducts)
-        }else{
-            filteredProducts = products.filter(product=>clothesFilter.includes(product.category)&&genderFilter.includes(product.gender))
-            console.log(filteredProducts)
-            setShowProducts(filteredProducts)
-        }
-    }
-
-    //Get inputs that are checked and store them by filter
-    const filter = (filterInputs,previousInput,remove)=>{
-        if(!remove){
-            filterInputs.forEach(input=>{
-                if(input==previousInput){
-                    const inputFilter = input.getAttribute('name')
-                    const inputValue = input.getAttribute('value')
-                    switch(inputFilter){
-                        case 'Clothes':
-                            let clothesAdd = clothesFilter
-                            if(!clothesAdd.includes(inputValue)){
-                                clothesAdd.push(inputValue)
-                            }
-                            setClothesFilter(clothesAdd)
-                            break;
-                        case 'Gender':
-                            let genderAdd = genderFilter
-                            if(!genderAdd.includes(inputValue)){
-                                genderAdd.push(inputValue)
-                            }
-                            setGenderFilter(genderAdd)
-                            break;
-                        case 'Color':
-                            break;
-                    }
-                }
-            })
-            console.log(clothesFilter,genderFilter)  
-        }
-        else{
-            filterInputs.forEach(input=>{
-                if(input==previousInput){
-                    const inputFilter = input.getAttribute('name')
-                    const inputValue = input.getAttribute('value')
-                    switch(inputFilter){
-                        case 'Clothes':
-                            let clothesRemove = clothesFilter
-                            let indexClothes = clothesRemove.indexOf(inputValue)
-                            if(indexClothes > -1){
-                                clothesRemove.splice(indexClothes, 1)
-                            }
-                            setClothesFilter(clothesRemove)
-                            break;
-                        case 'Gender':
-                            let genderRemove = genderFilter
-                            let indexGender = genderRemove.indexOf(inputValue)
-                            if(indexGender > -1){
-                                genderRemove.splice(indexGender, 1)
-                            }
-                            setGenderFilter(genderRemove)
-                            break;
-                        case 'Color':
-                            break;
-                    }
-                }
-            })
-            console.log(clothesFilter,genderFilter)  
-        }
-        //Query String Constructor Function
-        buildString()
-    }
-
-    //Check if inputs are checked, then filter
-    useEffect(()=>{
         const filterInputs = document.querySelectorAll(".filterInput")
-        filterInputs.forEach(input=>{
-            input.addEventListener('change',()=>{
-                if (input.checked) {
-                    filter(filterInputs,input,false)
-                } else {
-                    filter(filterInputs,input,true)
-                }
-            })
-        })
+        filterInputs.forEach(input=>filterArrays(input))
     },[])
     
 
