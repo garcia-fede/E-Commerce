@@ -7,7 +7,6 @@ const Landing = () => {
 
     const [products,setProducts] = useState([])
     const [showProducts,setShowProducts] = useState([])
-    const [addEvent,setAddEvent] = useState(true)
     const [clothesFilter,setClothesFilter] = useState([])
     const [genderFilter,setGenderFilter] = useState([])
     const [colorFilter,setColorFilter] = useState([])
@@ -23,12 +22,28 @@ const Landing = () => {
             let filteredProducts = products.filter(product=>clothesFilter.includes(product.category))
             setShowProducts(filteredProducts)
         }
-        else if(gender>0&&clothes==0&&color==0){
+        else if(clothes==0&&gender>0&&color==0){
             let filteredProducts = products.filter(product=>genderFilter.includes(product.gender))
             setShowProducts(filteredProducts)
         }
-        else{
+        else if(clothes==0&&gender==0&&color>0){
+            let filteredProducts = products.filter(product=>colorFilter.includes(product.color))
+            setShowProducts(filteredProducts)
+        }
+        else if(clothes>0&&gender>0&&color==0){
             let filteredProducts = products.filter(product=>clothesFilter.includes(product.category)&&genderFilter.includes(product.gender))
+            setShowProducts(filteredProducts)
+        }
+        else if(clothes>0&&gender==0&&color>0){
+            let filteredProducts = products.filter(product=>clothesFilter.includes(product.category)&&colorFilter.includes(product.color))
+            setShowProducts(filteredProducts)
+        }
+        else if(clothes==0&&gender>0&&color>0){
+            let filteredProducts = products.filter(product=>genderFilter.includes(product.gender)&&colorFilter.includes(product.color))
+            setShowProducts(filteredProducts)
+        }
+        else{
+            let filteredProducts = products.filter(product=>clothesFilter.includes(product.category)&&genderFilter.includes(product.gender)&&colorFilter.includes(product.color))
             setShowProducts(filteredProducts)
         }
     }
@@ -55,7 +70,6 @@ const Landing = () => {
                 if(!addToFilter.includes(inputValue)){
                     addToFilter.push(inputValue)
                 }
-                setColorFilter(addToFilter)
                 break;
         }
         updateProducts()
@@ -87,6 +101,12 @@ const Landing = () => {
                 break;
             case 'Color':
                 removeFromFilter = colorFilter
+                if(removeFromFilter.includes(inputValue)){
+                    index = removeFromFilter.indexOf(inputValue)
+                    if(index>-1){
+                        removeFromFilter.splice(index, 1)
+                    }
+                }
                 break;
         } 
         updateProducts()
@@ -112,6 +132,24 @@ const Landing = () => {
                 }
                 break;
             case 'Color':
+                if(input.checked){
+                    addFilter(inputValue,category)
+                }else{
+                    removeFilter(inputValue,category)
+                }
+                break;
+        }
+    }
+
+    const prueba = (element)=>{
+        let id = element.getAttribute("id")
+        switch(id){
+            case 'Clothes':
+                break;
+            case 'Gender':
+                break;
+            case 'Color':
+                break;
         }
     }
 
@@ -138,64 +176,109 @@ const Landing = () => {
                 </div>
                 <div className="sidebar">
                     <div className="filter filterClothes">
-                        <h2>
+                        <h2 id="Categories" onClick={(e)=>prueba(e.target)}>
                             Categories 
                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-triangle" width="16" height="16" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="fill"/>
                                 <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
                             </svg>
                         </h2>
-                        <div className="option">
-                            <input className="filterInput" type="checkbox" id='T-Shirts' name='Clothes' value='T-Shirts' onClick={(e) => categoryCheck(e.target)}/>
-                            <label htmlFor="T-Shirts">T-Shirts</label>
-                        </div>
-                        <div className="option">
-                            <input className="filterInput" type="checkbox" id='Jackets' name='Clothes' value='Jackets' onClick={(e) => categoryCheck(e.target)}/>
-                            <label htmlFor="Jackets">Jackets</label>
-                        </div>
-                        <div className="option">
-                            <input className="filterInput" type="checkbox" id='Pants' name='Clothes' value='Pants' onClick={(e) => categoryCheck(e.target)}/>
-                            <label htmlFor="Pants">Pants</label>
-                        </div>
-                        <div className="option">
-                            <input className="filterInput" type="checkbox" id='Shoes' name='Clothes' value='Shoes' onClick={(e) => categoryCheck(e.target)}/>
-                            <label htmlFor="Shoes">Shoes</label>
+                        <div className="optionsClothes">
+                            <div className="option">
+                                <input className="filterInput" type="checkbox" id='T-Shirts' name='Clothes' value='T-Shirts' onClick={(e) => categoryCheck(e.target)}/>
+                                <label htmlFor="T-Shirts">T-Shirts</label>
+                            </div>
+                            <div className="option">
+                                <input className="filterInput" type="checkbox" id='Jackets' name='Clothes' value='Jackets' onClick={(e) => categoryCheck(e.target)}/>
+                                <label htmlFor="Jackets">Jackets</label>
+                            </div>
+                            <div className="option">
+                                <input className="filterInput" type="checkbox" id='Pants' name='Clothes' value='Pants' onClick={(e) => categoryCheck(e.target)}/>
+                                <label htmlFor="Pants">Pants</label>
+                            </div>
+                            <div className="option">
+                                <input className="filterInput" type="checkbox" id='Shoes' name='Clothes' value='Shoes' onClick={(e) => categoryCheck(e.target)}/>
+                                <label htmlFor="Shoes">Shoes</label>
+                            </div>
                         </div>
                     </div>
                     <div className="filter filterGender">
-                        <h2>
+                        <h2 id="Gender" onClick={(e)=>prueba(e.target)}>
                             Gender 
                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-triangle" width="16" height="16" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="fill"/>
                                 <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
                             </svg>
                         </h2>
-                        <div className="option">
-                            <input className="filterInput" type="checkbox" value='female' id='female' name='Gender' onClick={(e) => categoryCheck(e.target)} />
-                            <label htmlFor="female">Women</label>
-                        </div>
-                        <div className="option">
-                            <input className="filterInput" type="checkbox" value='male' id='male' name='Gender' onClick={(e) => categoryCheck(e.target)} />
-                            <label htmlFor="male">Men</label>
+                        <div className="optionsGender">
+                            <div className="option">
+                                <input className="filterInput" type="checkbox" value='female' id='female' name='Gender' onClick={(e) => categoryCheck(e.target)} />
+                                <label htmlFor="female">Women</label>
+                            </div>
+                            <div className="option">
+                                <input className="filterInput" type="checkbox" value='male' id='male' name='Gender' onClick={(e) => categoryCheck(e.target)} />
+                                <label htmlFor="male">Men</label>
+                            </div>
                         </div>
                     </div>
-                    <div className="filter filterColor">
-                        <h2>
+                    <div className="filter filterColor" onCli>
+                        <h2 id="Color" onClick={(e)=>prueba(e.target)}>
                             Color 
                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-triangle" width="16" height="16" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="fill"/>
                                 <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
                             </svg>
                         </h2>
-                        <input className="filterInput" type="color" id="colorInput" name="Color" list="colorOptions" />
-                        <datalist id="colorOptions">
-                            <option value="#ff0000">Red</option>
-                            <option value="#00ff00">Green</option>
-                            <option value="#0000ff">Blue</option>
-                            <option value="#ffff00">Yellow</option>
-                            <option value="#ff00ff">Magenta</option>
-                            <option value="#00ffff">Cyan</option>
-                        </datalist>
+                        <div className="optionsColors">
+                            <div className="option">
+                                <input type="checkbox" value="Pink Cream" id='Pink Cream' name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Pink Cream">Pink Cream</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="Pink" id="Pink" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Pink">Pink</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="Black" id="Black" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Black">Black</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="Beige" id="Beige" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Beige">Beige</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="White" id="White" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="White">White</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="Blue" id="Blue" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Blue">Blue</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="Orange" id="Orange" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Orange">Orange</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="Red" id="Red" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Red">Red</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="Light Gray" id="Light Gray" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Light Gray">Light Gray</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="Gray" id="Gray" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Gray">Gray</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="Light Blue" id="Light Blue" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Light Blue">Light Blue</label>
+                            </div>
+                            <div className="option">
+                                <input type="checkbox" value="Brown" id="Brown" name="Color" onClick={(e)=>categoryCheck(e.target)} />
+                                <label htmlFor="Brown">Brown</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="productsContainer">
