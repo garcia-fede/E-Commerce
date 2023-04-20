@@ -60,6 +60,7 @@ header nav ul li a{
     color: black;
     width: 100%;
     height: 100%;
+    font-size: 16px;
 }
 
 header nav ul li a:hover:not(:nth-child(4),:nth-child(5)){
@@ -102,19 +103,20 @@ header nav ul li:nth-child(3){
     scale: 1.1;
 }
 
-#shopCart{
+.icon{
     width: 25px;
     transition: 0.1s;
 }
 
-#shopCart:hover{
+.icon:hover{
     scale:1.2;
     cursor:pointer;
 }
 
-.shopCartContainer{
+.interactContainer{
     display: flex;
     justify-content: center;
+    gap: 25px;
 }
 
 header .topLiner{
@@ -175,6 +177,7 @@ header .topLiner{
     transform: rotate(45deg);
     transform-origin: top left;
 }
+
 #hamburgerCheckbox:checked ~ .hamburgerButton span:nth-child(2){
     position: absolute;
     opacity: 0;
@@ -185,6 +188,7 @@ header .topLiner{
     transform: translate(-50%,-50%);
     
 }
+
 #hamburgerCheckbox:checked ~ .hamburgerButton span:nth-child(3){
     position: absolute;
     width: 30px;
@@ -236,8 +240,42 @@ header .topLiner{
     width: 100%;
     min-height: 100vh;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.websiteInfo{
+    height: 10vh;
+    width: 80%;
+    margin: 5vh 10%;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.websiteInfo h2{
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+.websiteInfo div:nth-child(2){
+    border-left: 1px solid black;
+}
+
+.websiteInfo div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Roboto',sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 0 20px;
+    border-right: 1px solid black;
 }
 
 .sidebar{
@@ -246,29 +284,38 @@ header .topLiner{
     position: sticky;
     left: 0;
     top: 0px;
-    width: 15%;
-    background: rgb(233, 231, 231);
+    width: 17.5%;
+    background: rgb(255, 255, 255);
     height: 90vh;
     padding: 5vh 0;
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto',sans-serif;
 }
 
-.sidebar h2{
+.sidebar .filter{
+    margin-left: 15%;
+}
+
+.sidebar h1,h2{
+    padding: 0;
     display: flex;
     align-items: center;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 18px;
     gap: 5px;
-    margin: 5px 0 5px 15%
+    margin: 15px 0 15px 10%
 }
 
-.sidebar h2:hover{
-    cursor: pointer;
+.sidebar h1{
+    width: auto;
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 30px;
+    margin-right: 15%;
 }
 
-.sidebar input{
-    margin-left: 25%;
+input[type=checkbox]{
+    accent-color: rgb(248, 126, 45);
 }
 
 .sidebar .option{
@@ -277,7 +324,13 @@ header .topLiner{
     gap: 10px;
     width: 75%;
     font-weight: 400;
+    color: rgba(0, 0, 0, 0.822);
     font-size: 20px;
+    margin-bottom: 2.5px;
+}
+
+.sidebar .option label{
+    font-size: 18px;
 }
 
 .sidebar svg{
@@ -290,9 +343,10 @@ header .topLiner{
 }
 
 .productsContainer{
-    height: auto;
-    width: 65%;
-    padding: 10vh 10% 0 10%;
+    min-height: 50vh;
+    width: auto;
+    padding: 10vh 0;
+    margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 15px;
@@ -300,6 +354,43 @@ header .topLiner{
     font-size: 20px;
 }
 
+.endOfProducts{
+    margin-top: 5vh;
+    height: 15vh;
+    padding: 7.5vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    grid-column: 1/5;
+}
+
+.endOfProducts p{
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 700;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.233);
+    margin-bottom: 20px;
+}
+
+.endOfProducts .socialIcons{
+    display: flex;
+    justify-content: space-around;
+    min-width: 50%;
+}
+
+.endOfProducts .socialIcons div{
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    text-transform: uppercase;
+    align-items: center;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
 
 /*-------------- Card --------------------*/
 
@@ -310,14 +401,32 @@ header .topLiner{
     display: flex;
     flex-direction: column;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+    border-radius: 5px;
 }
 
 .card .cardImgContainer{
     width: 100%;
+    position: relative;
     overflow: hidden;
 }
-
+.cardImgContainer .likeButton{
+    position: absolute;
+    top:5px;
+    right: 5px;
+    z-index: 10;
+    border: none;
+    background: none;
+}
+.cardImgContainer .likeButton svg:hover{
+    cursor: pointer;
+    fill: rgb(248, 126, 45);
+}
+.cardContent{
+    width: 90%;
+    padding: 0 5%;
+}
 .card img{
+    border-radius: 5px;
     width: 100%;
     aspect-ratio: 1;
     object-fit: contain;
@@ -329,14 +438,81 @@ header .topLiner{
     scale: 1.05;
 }
 
-.card p:nth-child(2){
-    font-weight: 700;
-    margin: 15px 0
+.card .productTittle{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 0;
+    font-weight: 400;
 }
 
-@media (max-width:1250px){
+.card .productPrice{
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.card .buttons{
+    display: flex;
+    width: 100%;
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.card .button:nth-child(1){
+    background-color: black;
+    border: none;
+    flex-basis: 60%;
+}
+
+.card .button:nth-child(1):hover{
+    background: lightgray;
+    color: black;
+    cursor: pointer;
+}
+
+.card .button:nth-child(2){
+    background-color: rgb(248, 126, 45);
+    border: none;
+}
+
+.card .button:nth-child(2):hover{
+    cursor: pointer;
+    background: lightgray;
+}
+
+.card .button:nth-child(2):hover svg{
+    stroke: black;
+}
+
+.card .buttons .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    height: 40px;
+    padding: 5px 20px;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    font-family: 'Roboto',sans-serif;
+    gap: 5px;
+}
+
+/*-----------------------------------------------*/
+
+@media (max-width:1300px){
     header nav ul{
-        grid-template-columns: 1fr 1fr 1fr 3fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 3fr 0.75fr;
+    }
+    header nav{
+        width: 95%;
+        padding: 0% 2.5%;
+    }
+    .interactContainer{
+        justify-content: space-around;
+        gap: 0;
     }
     .productsContainer{
         width: 75%;
@@ -346,9 +522,11 @@ header .topLiner{
         padding: 10% 0 0 0;
         height: auto;
     }
-
     .sidebar{
         width: 225px;
+    }
+    .endOfProducts .socialIcons{
+        width: 100%;
     }
 }
 
@@ -378,6 +556,8 @@ header .topLiner{
     header nav{
         flex-direction: column;
         min-height: 100%;
+        z-index: 99;
+        background: white;
     }
     header nav ul{
         display: none;
@@ -398,38 +578,102 @@ header .topLiner{
         height: auto;
         width: auto;
     }
-
-    /*--------- Landing ------------*/
-
     .mainAdvertisement{
         margin-top: 10vh;
     }
-
     .productsContainer{
+        z-index: -1;
         width: 90%;
         padding: 10% 2.5% 0 2.5%;
     }
-
     .sidebar{
         display: none;
+    }
+    .websiteInfo{
+        z-index: -1;
+        width: 90%;
+        margin: 5vh 5%;
+    }
+    .websiteInfo div{
+        padding: 0 10px;
     }
 }
 
 @media (max-width:725px){
     .card{
         width: 180px;
-        height: 250px;
+        min-height: 250px;
+    }
+    .card .buttons{
+        gap: 5px;
+    }
+    .card .button:nth-child(2){
+        padding: 5px 15px;
     }
     .productsContainer{
         width: 95%;
         padding: 0 2.5%;
+    }
+    .websiteInfo{
+        flex-direction: column;
+        height: auto;
+        padding: 5vh 0;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.233);
+    }
+    .websiteInfo div{
+        height: 35px;
+        border-bottom: 1px solid black;
+        border-right: none;
+        border-left: none;
+        width: 60%;
+        margin: 0 20%;
+        font-size: 10px;
+    }
+    .websiteInfo div:nth-child(2){
+        border-top: 1px solid black;
+        border-left: none;
+    }
+    .websiteInfo h2{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 25px;
+        font-family: 'Roboto',sans-serif;
+    }
+}
+
+@media (max-width:550px){
+    .endOfProducts{
+        height: auto;
+        text-align: center;
+    }
+
+    .endOfProducts .socialIcons{
+        display: grid;
+        gap: 25px;
+        grid-template-columns: repeat(2, minmax(0, 25%));
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     }
 }
 
 @media (max-width:390px){
     .card{
         width: 150px;
-        height: 250px;
+        min-height: 250px;
+    }
+    .card .productTittle{
+        font-size: 18px;
+    }
+    .card .buttons{
+        gap: 2.5px;
+    }
+    .card .button:nth-child(1){
+        padding: 5px 5px;
+    }
+    .card .button:nth-child(2){
+        padding: 5px 10px;
     }
     .productsContainer{
         padding: 10% 0 0 0
