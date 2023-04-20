@@ -296,7 +296,7 @@ header .topLiner{
     margin-left: 15%;
 }
 
-.sidebar h1,h2{
+.sidebar h1,.sidebar h2{
     padding: 0;
     display: flex;
     align-items: center;
@@ -597,6 +597,12 @@ input[type=checkbox]{
     .websiteInfo div{
         padding: 0 10px;
     }
+    .endOfProducts{
+        padding: 4vh 0;
+    }
+    .endOfProducts p{
+        padding-bottom: 25px;
+    }
 }
 
 @media (max-width:725px){
@@ -648,7 +654,6 @@ input[type=checkbox]{
         height: auto;
         text-align: center;
     }
-
     .endOfProducts .socialIcons{
         display: grid;
         gap: 25px;
@@ -656,6 +661,7 @@ input[type=checkbox]{
         padding-bottom: 25px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     }
+
 }
 
 @media (max-width:390px){
