@@ -11,6 +11,8 @@ const ContextProvider = ({children}) => {
     const [genderFilter,setGenderFilter] = useState([])
     const [colorFilter,setColorFilter] = useState([])
 
+    //Sidebar filter function
+
     const updateProducts = ()=>{
         let clothes = clothesFilter.length
         let gender = genderFilter.length
@@ -112,12 +114,29 @@ const ContextProvider = ({children}) => {
         updateProducts()
     }
 
+    // Product name,color and gender to URL convertion
+
+    const convertURL = (product)=>{
+        let gender = ''
+        if(product.gender=='male'){
+            gender = 'men'
+        }else {
+            gender = 'women'
+        }
+        let identificationString = gender + '-' + product.title + '-' + product.color
+        const formatString = identificationString.toLowerCase().normalize("NFD").replace(/[^a-zA-Z0-9\s-]/g, "").replace(/[\u0300-\u036f]/g, "");
+        const urlString = formatString.replace(/ /g, "-")
+        return urlString;
+    }
+
     const contextValue = {
         addFilter,
         removeFilter,
         setProducts,
         setShowProducts,
-        showProducts
+        convertURL,
+        showProducts,
+        products
     }
 
     return (

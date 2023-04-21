@@ -10,6 +10,19 @@ body{
     min-height: 100vh;
 }
 
+/*------------------ Work in progress -------------*/
+
+.WIP{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100%;
+    text-align: center;
+    font-size: 60px;
+    font-family: 'Roboto',sans-serif;
+}
+
 /*------------------ Header -----------------------*/
 
 .HamburgerButton,.hamburgerButtonDisplay{
@@ -458,33 +471,37 @@ input[type=checkbox]{
     margin-bottom: 15px;
 }
 
-.card .button:nth-child(1){
-    background-color: black;
-    border: none;
+.card a:nth-child(1){
     flex-basis: 60%;
 }
 
-.card .button:nth-child(1):hover{
+.card a:nth-child(1) .button{
+    background-color: black;
+    border: none;
+    width: 100%;
+}
+
+.card a:nth-child(1) .button:hover{
     background: lightgray;
     color: black;
     cursor: pointer;
 }
 
-.card .button:nth-child(2){
+.card a:nth-child(2) .button{
     background-color: rgb(248, 126, 45);
     border: none;
 }
 
-.card .button:nth-child(2):hover{
+.card a:nth-child(2) .button:hover{
     cursor: pointer;
     background: lightgray;
 }
 
-.card .button:nth-child(2):hover svg{
+.card a:nth-child(2) .button:hover svg{
     stroke: black;
 }
 
-.card .buttons .button{
+.card .buttons a .button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -613,7 +630,7 @@ input[type=checkbox]{
     .card .buttons{
         gap: 5px;
     }
-    .card .button:nth-child(2){
+    .card a:nth-child(2) .button{
         padding: 5px 15px;
     }
     .productsContainer{
@@ -675,10 +692,10 @@ input[type=checkbox]{
     .card .buttons{
         gap: 2.5px;
     }
-    .card .button:nth-child(1){
+    .card a:nth-child(1) .button{
         padding: 5px 5px;
     }
-    .card .button:nth-child(2){
+    .card a:nth-child(2) .button{
         padding: 5px 10px;
     }
     .productsContainer{

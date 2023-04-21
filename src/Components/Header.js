@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from '../Images/Logo.png'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
@@ -18,10 +19,10 @@ const Header = () => {
                     </label>
                     <ul>
                         <li><a href="">Products</a></li>
-                        <li><a href="">About us</a></li>
+                        <li><Link to="/about">About us</Link></li>
                         <li><a href="">Contact</a></li>
                         <li className='searchBar'>
-                            <input type="text" placeholder='Search product by name...'/>
+                            <input type="text" placeholder='Search product by name...' />
                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <circle cx="10" cy="10" r="7" />
