@@ -25,7 +25,7 @@ body{
 
 /*------------------ Header -----------------------*/
 
-.HamburgerButton,.hamburgerButtonDisplay{
+.hamburgerButton,.hamburgerButtonDisplay{
     display: none;
 }
 
@@ -172,24 +172,21 @@ header .topLiner{
 .hamburgerButton{
     transition: 1s;
     position: fixed;
-    top: 10px;
-    right: 50%;
-    left:50%;
+    right: 2.5%;
     display: none;
-    transform: translateX(-35%);
-    width: 40px;
-    height: 35px;
+    width: 30px;
+    height: 25px;
     padding: 5px;
-    border: 1px solid black;
     border-radius: 15px;
     cursor: pointer;
+    top: 10px;
 }
 
 .hamburgerButton span{
     display: block;
-    margin: 5px auto;
-    width: 27.5px;
-    height: 5px;
+    margin: 4px auto;
+    width: 22px;
+    height: 4px;
     background: black;
     border-radius: 100px;
     transition: 0.5s;
@@ -718,59 +715,91 @@ input[type=checkbox]{
 }
 
 @media (max-width:925px){
-    .logoContainer{
+    /*--------- Header ----------*/
+    header{
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        background: white;
+        height: 10vh;
+        width: 100%;
+    }
+    header nav{
+        height: auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    header nav ul{
+        transition: 0.5s ease;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        background: white;
+        position: absolute;
+        top: 10vh;
+        width: 0%;
+        right: 0;
+    }
+    header nav ul li{
+        border: none;
+        width: 100%;
+        height: auto;
+        margin: 5px 0;
+    }
+    header nav ul li a{
+        width: 100px;
+        height: 25px;
+    }
+    header nav ul .searchBar{
+        height: 20px;
+        padding: 0 10%;
+        width: 80%;
+        margin: 10px 0;
+    }
+    header nav ul .searchBar svg{
+        right: 12.5%;
+        height: 20px;
+    }
+    header nav ul .interactContainer{
+        justify-content: center;
+        gap: 25px;
+    }
+    header nav ul li, header ul svg, header ul input{
         display: none;
+    }
+    .logoContainer{
+        padding: 1.25vh 0;
+        height: 7.5vh;
+        width: auto;
+        align-self: flex-start;
+        margin-left: 5%;
     }
     .hamburgerButton{
         display: block;
-        z-index: 99;
+        z-index: 10;
     }
     #hamburgerCheckbox:checked ~ ul{
-        margin: 1rem 0;
+        width: 100%;
         display: initial;
     }
-    #hamburgerCheckbox:checked ~ ul{
-        padding-top: 40px;
+    #hamburgerCheckbox:checked ~ ul li, #hamburgerCheckbox:checked ~ ul svg, #hamburgerCheckbox:checked ~ ul input{
+        display:flex;
     }
     .topLiner{
         display: none;
     }
-    header{
-        position: fixed;
-        background: white;
-        height: 10vh;
-        top: 0;
-    }
-    header nav{
-        flex-direction: column;
-        min-height: 100%;
-        z-index: 99;
-        background: white;
-    }
-    header nav ul{
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        padding: 0 10%;
-        height: auto;
-        background: white;
-    }
-    header nav ul li{
-        transform: translateX(5px);
-        height: auto;
-        width: auto;
-        padding: 10px;
-        border: none;
-    }
-    header nav ul li a{
-        height: auto;
-        width: auto;
-    }
+
+    /*--------- Landing ----------*/
+
     .mainAdvertisement{
         margin-top: 10vh;
     }
     .productsContainer{
-        z-index: -1;
+        z-index: 1;
         width: 90%;
         padding: 10% 2.5% 0 2.5%;
     }
@@ -778,7 +807,7 @@ input[type=checkbox]{
         display: none;
     }
     .websiteInfo{
-        z-index: -1;
+        z-index: 1;
         width: 90%;
         margin: 5vh 5%;
     }
@@ -794,7 +823,7 @@ input[type=checkbox]{
     /*--------- Product Detail ---------*/
     .productDetailContainer{
         margin-top: 100px;
-        z-index: -1;
+        z-index: 1;
         padding: 0 2.5%;
         width: 95%;
         align-items: flex-start;
@@ -863,7 +892,7 @@ input[type=checkbox]{
     /*--------- Product Detail ---------*/
     .productDetailContainer{
         margin:0;
-        z-index: -1;
+        z-index: 1;
         padding: 0 5%;
         width: 90%;
         flex-direction: column;
