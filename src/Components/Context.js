@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
-
+import { db } from "./firebaseConfig"
+import { collection,getDocs} from "firebase/firestore"
 export const context = createContext()
 const { Provider } = context
 
@@ -11,7 +12,23 @@ const ContextProvider = ({children}) => {
     const [genderFilter,setGenderFilter] = useState([])
     const [colorFilter,setColorFilter] = useState([])
 
-    //Sidebar filter function
+    // Import products from firebase
+
+    const getDatabaseProducts = ()=>{
+        const productsCollection = collection(db,"products")
+        const productsUnformatted = getDocs(productsCollection)
+        productsUnformatted.then((res)=>{
+            const productsDB = res.docs.map((product)=>{
+                return product.data()
+            })
+            setProducts(productsDB)
+            setShowProducts(productsDB)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    // Sidebar filter function
 
     const updateProducts = ()=>{
         let clothes = clothesFilter.length
@@ -130,6 +147,7 @@ const ContextProvider = ({children}) => {
     }
 
     const contextValue = {
+        getDatabaseProducts,
         addFilter,
         removeFilter,
         setProducts,

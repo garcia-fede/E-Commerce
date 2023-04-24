@@ -9,7 +9,9 @@ const Header = () => {
                 <div className="topLiner"></div>
                 <nav>
                     <div className="logoContainer">
-                        <img src={Logo} className='logo' alt="Logo - Chilly Peaks" />
+                        <Link to="/">
+                            <img src={Logo} className='logo' alt="Logo - Chilly Peaks" />
+                        </Link>
                     </div>
                     <input type="checkbox" id="hamburgerCheckbox" />
                     <label htmlFor="hamburgerCheckbox" className="hamburgerButton">
@@ -18,7 +20,7 @@ const Header = () => {
                         <span></span>
                     </label>
                     <ul>
-                        <li><a href="">Products</a></li>
+                        <li><Link to="/">Products</Link></li>
                         <li><Link to="/about">About us</Link></li>
                         <li><a href="">Contact</a></li>
                         <li className='searchBar'>

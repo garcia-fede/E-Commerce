@@ -3,26 +3,14 @@ import { useEffect,useState,useContext } from 'react';
 import WebsiteInfo from './WebsiteInfo';
 import Sidebar from './Sidebar';
 import Card from './Card';
-import { db } from "./firebaseConfig"
-import { collection,getDocs} from "firebase/firestore"
 import { context } from './Context';
 
 const Landing = () => {
 
-    const {setProducts,setShowProducts,showProducts} =useContext(context)
+    const {setProducts,setShowProducts,showProducts,getDatabaseProducts} =useContext(context)
 
     useEffect(()=>{
-        const productsCollection = collection(db,"products")
-        const productsUnformatted = getDocs(productsCollection)
-        productsUnformatted.then((res)=>{
-            const productsDB = res.docs.map((product)=>{
-                return product.data()
-            })
-            setProducts(productsDB)
-            setShowProducts(productsDB)
-        }).catch((err)=>{
-            console.log(err)
-        })
+        getDatabaseProducts()
     },[])
 
     return (

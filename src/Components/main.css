@@ -29,6 +29,10 @@ body{
     display: none;
 }
 
+a{
+    text-decoration: none;
+}
+
 header{
     height: 12.5vh;
     width: 100%;
@@ -66,6 +70,7 @@ header nav ul li{
 }
 
 header nav ul li a{
+    text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,8 +150,16 @@ header .topLiner{
     align-items: center;
 }
 
-.logo{
+.logoContainer a{
+    width: auto;
     height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    height: 100%;
 }
 
 /*---------- Hamburger Button --------------------*/
@@ -517,6 +530,163 @@ input[type=checkbox]{
     gap: 5px;
 }
 
+/*---------------  Product Detail   -------------*/
+
+.productDetailContainer{
+    height: 87.5vh;
+    width: 80%;
+    padding: 0 10%;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+}
+
+.productDetailContainer .productImage{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+.productDetailContainer .productImage img{
+    object-fit: cover;
+}
+.productDetailContainer .productDetail{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-family: 'Roboto',sans-serif;
+    height: 500px;
+    width: 100%;
+}
+
+.productDetailContainer .productDetail h1{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.productDetailContainer .productDetail h2{
+    color: rgb(248, 126, 45);
+    margin-bottom: 20px;
+}
+
+.productDetailContainer .productDetail h2, .productDetailContainer .productDetail p{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.productDetailContainer .productDetail p{
+    height: auto;
+    width: 80%;
+    color: rgba(0, 0, 0, 0.7);
+    padding: 20px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.productDetailContainer .productDetail h3{
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.productDetailContainer .buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.productDetailContainer .buttons div{
+    display: flex;
+    justify-content: space-around;
+}
+
+.productDetailContainer .buttons div .addButton, .productDetailContainer .buttons div .substractButton{
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    border-radius: 5px;
+}
+
+.productDetailContainer .addButton svg:hover, .productDetailContainer .substractButton svg:hover{
+    cursor: pointer;
+    background: lightgray;
+    border-radius: 5px;
+    stroke: black;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.productDetailContainer .addButton svg:active, .productDetailContainer .substractButton svg:active{
+    background: rgb(248, 126, 45);
+}
+
+.productDetailContainer .buttons div svg{
+    stroke: white;
+}
+
+.productDetailContainer .buttons div .quantityInput{
+    width: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    margin: 0 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productDetailContainer .buttons .addToCart{
+    padding: 5px 10px;
+    width: 150px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    height: 40px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: rgb(248, 126, 45);
+    margin-right: 10px;
+}
+
+.productDetailContainer .buttons .likeButton{
+    border: none;
+    width: 40px;
+    background: rgb(248, 126, 45);
+    border-radius: 5px;
+}
+
+.productDetailContainer .buttons .likeButton:hover, .productDetailContainer .buttons .likeButton:hover svg{
+    background: lightgray;
+    cursor: pointer;
+    stroke: black;
+}
+
+.productDetailContainer .buttons .addToCart:hover{
+    background: lightgray;
+    color: black;
+    cursor: pointer;
+}
+
+.productDetailContainer .productDetail select{
+    margin-left: 15px;
+    width: 80px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
 /*-----------------------------------------------*/
 
 @media (max-width:1300px){
@@ -569,6 +739,7 @@ input[type=checkbox]{
         position: fixed;
         background: white;
         height: 10vh;
+        top: 0;
     }
     header nav{
         flex-direction: column;
@@ -620,6 +791,30 @@ input[type=checkbox]{
     .endOfProducts p{
         padding-bottom: 25px;
     }
+    /*--------- Product Detail ---------*/
+    .productDetailContainer{
+        margin-top: 100px;
+        z-index: -1;
+        padding: 0 2.5%;
+        width: 95%;
+        align-items: flex-start;
+    }
+    .productDetailContainer .productDetail{
+        width: 40%;
+    }
+    .productDetailContainer .productImage{
+        width: 60%;
+        height: 60%;
+    }
+    .productDetailContainer .productImage img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .productDetailContainer .productDetail p{
+        width: 100%;
+    }
 }
 
 @media (max-width:725px){
@@ -663,6 +858,48 @@ input[type=checkbox]{
         gap: 10px;
         margin-bottom: 25px;
         font-family: 'Roboto',sans-serif;
+    }
+
+    /*--------- Product Detail ---------*/
+    .productDetailContainer{
+        margin:0;
+        z-index: -1;
+        padding: 0 5%;
+        width: 90%;
+        flex-direction: column;
+        height: auto;
+        margin-top: 100px;
+    }
+    .productDetailContainer .productDetail{
+        width: 100%;
+        padding-bottom: 50px;
+        height: auto;
+    }
+    .productDetailContainer .productImage{
+        width: 100%;
+        max-height: 350px;
+    }
+    .productDetailContainer .productImage img{
+        max-height: 350px;
+        max-width: 350px;
+    }
+    .productDetailContainer .productDetail h1{
+        margin-top: 20px;
+    }
+    .productDetailContainer .productDetail p{
+        margin-left: 0;
+        width: 100%;
+    }
+    .productDetailContainer .productDetail .buttons{
+        flex-direction: row;
+        width: 100%;
+    }
+    .productDetailContainer .productDetail .buttons button{
+        height: 100%;
+        padding: 0;
+    }
+    .productDetailContainer .productDetail div{
+        min-width: 30%;
     }
 }
 
