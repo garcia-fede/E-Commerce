@@ -7,7 +7,7 @@ import { context } from './Context';
 
 const Landing = () => {
 
-    const {setProducts,setShowProducts,showProducts,getDatabaseProducts} =useContext(context)
+    const {showProducts,getDatabaseProducts} =useContext(context)
 
     useEffect(()=>{
         getDatabaseProducts()
@@ -24,7 +24,7 @@ const Landing = () => {
                 <Sidebar />
                 <div className="productsContainer">
                     {showProducts.map(product=>{
-                        return <Card key={product.id} product={product} />
+                        return <Card key={product.productId} product={product} />
                     })}
                     <div className="endOfProducts">
                         <p>If you don't want to miss out our promotions and discount codes don't forget to follow us!</p>

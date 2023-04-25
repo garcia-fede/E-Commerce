@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import { context } from './Context'
 
 const Card = ({product}) => {
-    const {convertURL} = useContext(context)
+    const {convertURL,likeProduct,likedProducts} = useContext(context)
     let productURL = convertURL(product)
 
     return (
@@ -12,7 +12,7 @@ const Card = ({product}) => {
             <div className="card">
                 <div className="cardImgContainer">
                     <Link to={`/product/${productURL}`}><img src={product.image} alt={product} /></Link>
-                    <button className="likeButton">
+                    <button className="likeButton" onClick={(e)=>{likeProduct(e.target,product)}}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />

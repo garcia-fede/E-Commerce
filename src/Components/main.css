@@ -5,13 +5,10 @@
     margin: 0;
     padding: 0;
 }
-
 body{
     min-height: 100vh;
 }
-
 /*------------------ Work in progress -------------*/
-
 .WIP{
     display: flex;
     justify-content: center;
@@ -22,23 +19,18 @@ body{
     font-size: 60px;
     font-family: 'Roboto',sans-serif;
 }
-
 /*------------------ Header -----------------------*/
-
 .hamburgerButton,.hamburgerButtonDisplay{
     display: none;
 }
-
 a{
     text-decoration: none;
 }
-
 header{
     height: 12.5vh;
     width: 100%;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
-
 header nav{
     width: 90%;
     padding: 0 5%;
@@ -47,7 +39,6 @@ header nav{
     align-items: center;
     position: relative;
 }
-
 header nav ul{
     height: 100%;
     width: 80%;
@@ -55,7 +46,6 @@ header nav ul{
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr 4fr 1fr;
 }
-
 header nav ul li{
     height: 100%;
     display: flex;
@@ -68,7 +58,6 @@ header nav ul li{
     text-transform: uppercase;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
-
 header nav ul li a{
     text-decoration: none;
     display: flex;
@@ -80,17 +69,14 @@ header nav ul li a{
     height: 100%;
     font-size: 16px;
 }
-
 header nav ul li a:hover:not(:nth-child(4),:nth-child(5)){
     background:#21212110;
     cursor: pointer;
     color: rgb(248, 126, 45);
 }
-
 header nav ul li:nth-child(3){
     border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
-
 .searchBar{
     border: none;
     height: 30px;
@@ -100,7 +86,6 @@ header nav ul li:nth-child(3){
     justify-content: center;
     align-items: center;
 }
-
 .searchBar input{
     width: 90%;
     height: 100%;
@@ -108,40 +93,37 @@ header nav ul li:nth-child(3){
     padding: 2.5px 20px;
     border-radius: 5px;
 }
-
 .searchBar svg{
     position: absolute;
     z-index: 2;
     right: 2%;
     transition: 0.2s;
 }
-
 .searchBar svg:hover{
     cursor: pointer;
     scale: 1.1;
 }
-
 .icon{
     width: 25px;
     transition: 0.1s;
 }
-
 .icon:hover{
     scale:1.2;
     cursor:pointer;
 }
-
 .interactContainer{
     display: flex;
     justify-content: center;
     gap: 25px;
 }
-
+.interactContainer a{
+    width: auto;
+    height: auto;
+}
 header .topLiner{
     height: 5vh;
     background: black;
 }
-
 .logoContainer{
     height: 100%;
     width: 20%;
@@ -149,7 +131,6 @@ header .topLiner{
     justify-content: center;
     align-items: center;
 }
-
 .logoContainer a{
     width: auto;
     height: 50%;
@@ -157,18 +138,13 @@ header .topLiner{
     justify-content: center;
     align-items: center;
 }
-
 .logo{
     height: 100%;
 }
-
 /*---------- Hamburger Button --------------------*/
-
-
 #hamburgerCheckbox{
     display: none;
 }
-
 .hamburgerButton{
     transition: 1s;
     position: fixed;
@@ -191,7 +167,6 @@ header .topLiner{
     border-radius: 100px;
     transition: 0.5s;
 }
-
 #hamburgerCheckbox:checked ~ .hamburgerButton span:nth-child(1){
     position: absolute;
     right: 30%;
@@ -200,7 +175,6 @@ header .topLiner{
     transform: rotate(45deg);
     transform-origin: top left;
 }
-
 #hamburgerCheckbox:checked ~ .hamburgerButton span:nth-child(2){
     position: absolute;
     opacity: 0;
@@ -211,7 +185,6 @@ header .topLiner{
     transform: translate(-50%,-50%);
     
 }
-
 #hamburgerCheckbox:checked ~ .hamburgerButton span:nth-child(3){
     position: absolute;
     width: 30px;
@@ -221,10 +194,7 @@ header .topLiner{
     transform: rotate(-45deg);
     transform-origin: bottom left;
 }
-
-
 /*-------------------Landing---------------------*/
-
 .mainAdvertisement{
     width: 100%;
     height: 70vh;
@@ -236,7 +206,6 @@ header .topLiner{
     background-size: cover;
     background-position: center center;
 }
-
 .mainAdvertisement h1{
     min-width: 75%;
     text-align: center;
@@ -246,26 +215,22 @@ header .topLiner{
     font-family: 'Amiko',sans-serif;
     text-shadow: 4px 4px 2px rgba(0,0,0,0.35);
 }
-
 .mainAdvertisement h2{
     font-size: 36px;
     color: rgb(216,66,29);
     font-family: 'Caveat', cursive;
 }
-
 .mainAdvertisement img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
 .landingPage{
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
 }
-
 .websiteInfo{
     height: 10vh;
     width: 80%;
@@ -277,17 +242,14 @@ header .topLiner{
     align-items: center;
     position: relative;
 }
-
 .websiteInfo h2{
     margin: 0;
     padding: 0;
     display: none;
 }
-
 .websiteInfo div:nth-child(2){
     border-left: 1px solid black;
 }
-
 .websiteInfo div{
     display: flex;
     justify-content: center;
@@ -300,7 +262,6 @@ header .topLiner{
     padding: 0 20px;
     border-right: 1px solid black;
 }
-
 .sidebar{
     display: flex;
     flex-direction: column;
@@ -314,11 +275,9 @@ header .topLiner{
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto',sans-serif;
 }
-
 .sidebar .filter{
     margin-left: 15%;
 }
-
 .sidebar h1,.sidebar h2{
     padding: 0;
     display: flex;
@@ -328,7 +287,6 @@ header .topLiner{
     gap: 5px;
     margin: 15px 0 15px 10%
 }
-
 .sidebar h1{
     width: auto;
     padding-bottom: 5px;
@@ -336,11 +294,9 @@ header .topLiner{
     margin-bottom: 30px;
     margin-right: 15%;
 }
-
 input[type=checkbox]{
     accent-color: rgb(248, 126, 45);
 }
-
 .sidebar .option{
     margin-left: 10%;
     display: flex;
@@ -351,20 +307,16 @@ input[type=checkbox]{
     font-size: 20px;
     margin-bottom: 2.5px;
 }
-
 .sidebar .option label{
     font-size: 18px;
 }
-
 .sidebar svg{
     transform: rotate(180deg);
 }
-
 .sidebar label:hover{
     cursor: pointer;
     color: rgb(248, 126, 45);
 }
-
 .productsContainer{
     min-height: 50vh;
     width: auto;
@@ -376,7 +328,6 @@ input[type=checkbox]{
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
 }
-
 .endOfProducts{
     margin-top: 5vh;
     height: 15vh;
@@ -388,7 +339,6 @@ input[type=checkbox]{
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     grid-column: 1/5;
 }
-
 .endOfProducts p{
     text-transform: uppercase;
     font-size: 10px;
@@ -397,13 +347,11 @@ input[type=checkbox]{
     border-bottom: 1px solid rgba(0, 0, 0, 0.233);
     margin-bottom: 20px;
 }
-
 .endOfProducts .socialIcons{
     display: flex;
     justify-content: space-around;
     min-width: 50%;
 }
-
 .endOfProducts .socialIcons div{
     display: flex;
     flex-direction: column;
@@ -414,9 +362,7 @@ input[type=checkbox]{
     margin: 0;
     padding: 0;
 }
-
 /*-------------- Card --------------------*/
-
 .card{
     width: 250px;
     height: 350px;
@@ -456,23 +402,19 @@ input[type=checkbox]{
     object-position: center center;
     transition: 0.2s ease-in-out;
 }
-
 .card img:hover{
     scale: 1.05;
 }
-
 .card .productTittle{
     font-size: 20px;
     margin-top: 10px;
     margin-left: 0;
     font-weight: 400;
 }
-
 .card .productPrice{
     font-weight: 700;
     margin: 10px 0;
 }
-
 .card .buttons{
     display: flex;
     width: 100%;
@@ -480,37 +422,30 @@ input[type=checkbox]{
     justify-content: space-between;
     margin-bottom: 15px;
 }
-
 .card a:nth-child(1){
     flex-basis: 60%;
 }
-
 .card a:nth-child(1) .button{
     background-color: black;
     border: none;
     width: 100%;
 }
-
 .card a:nth-child(1) .button:hover{
     background: lightgray;
     color: black;
     cursor: pointer;
 }
-
 .card a:nth-child(2) .button{
     background-color: rgb(248, 126, 45);
     border: none;
 }
-
 .card a:nth-child(2) .button:hover{
     cursor: pointer;
     background: lightgray;
 }
-
 .card a:nth-child(2) .button:hover svg{
     stroke: black;
 }
-
 .card .buttons a .button{
     display: flex;
     justify-content: center;
@@ -526,9 +461,7 @@ input[type=checkbox]{
     font-family: 'Roboto',sans-serif;
     gap: 5px;
 }
-
 /*---------------  Product Detail   -------------*/
-
 .productDetailContainer{
     height: 87.5vh;
     width: 80%;
@@ -537,7 +470,6 @@ input[type=checkbox]{
     gap: 5%;
     align-items: center;
 }
-
 .productDetailContainer .productImage{
     width: 500px;
     height: 500px;
@@ -547,7 +479,6 @@ input[type=checkbox]{
     width: 100%;
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
 }
-
 .productDetailContainer .productImage img{
     object-fit: cover;
 }
@@ -559,22 +490,18 @@ input[type=checkbox]{
     height: 500px;
     width: 100%;
 }
-
 .productDetailContainer .productDetail h1{
     font-size: 22px;
     margin-bottom: 10px;
 }
-
 .productDetailContainer .productDetail h2{
     color: rgb(248, 126, 45);
     margin-bottom: 20px;
 }
-
 .productDetailContainer .productDetail h2, .productDetailContainer .productDetail p{
     font-size: 20px;
     font-weight: 400;
 }
-
 .productDetailContainer .productDetail p{
     height: auto;
     width: 80%;
@@ -585,13 +512,11 @@ input[type=checkbox]{
     margin-bottom: 20px;
     margin-left: 10px;
 }
-
 .productDetailContainer .productDetail h3{
     font-weight: 400;
     margin-bottom: 10px;
     color: rgba(0, 0, 0, 0.7);
 }
-
 .productDetailContainer .buttons{
     display: flex;
     flex-direction: column;
@@ -599,12 +524,10 @@ input[type=checkbox]{
     height: auto;
     margin-bottom: 20px;
 }
-
 .productDetailContainer .buttons div{
     display: flex;
     justify-content: space-around;
 }
-
 .productDetailContainer .buttons div .addButton, .productDetailContainer .buttons div .substractButton{
     color: white;
     border: none;
@@ -614,7 +537,6 @@ input[type=checkbox]{
     background: black;
     border-radius: 5px;
 }
-
 .productDetailContainer .addButton svg:hover, .productDetailContainer .substractButton svg:hover{
     cursor: pointer;
     background: lightgray;
@@ -623,15 +545,12 @@ input[type=checkbox]{
     border: 1px solid black;
     box-sizing: border-box;
 }
-
 .productDetailContainer .addButton svg:active, .productDetailContainer .substractButton svg:active{
     background: rgb(248, 126, 45);
 }
-
 .productDetailContainer .buttons div svg{
     stroke: white;
 }
-
 .productDetailContainer .buttons div .quantityInput{
     width: 50%;
     border: 1px solid rgba(0, 0, 0, 0.5);
@@ -641,7 +560,6 @@ input[type=checkbox]{
     justify-content: center;
     align-items: center;
 }
-
 .productDetailContainer .buttons .addToCart{
     padding: 5px 10px;
     width: 150px;
@@ -656,32 +574,128 @@ input[type=checkbox]{
     background: rgb(248, 126, 45);
     margin-right: 10px;
 }
-
 .productDetailContainer .buttons .likeButton{
     border: none;
     width: 40px;
     background: rgb(248, 126, 45);
     border-radius: 5px;
 }
-
 .productDetailContainer .buttons .likeButton:hover, .productDetailContainer .buttons .likeButton:hover svg{
     background: lightgray;
     cursor: pointer;
     stroke: black;
 }
-
 .productDetailContainer .buttons .addToCart:hover{
     background: lightgray;
     color: black;
     cursor: pointer;
 }
-
 .productDetailContainer .productDetail select{
     margin-left: 15px;
     width: 80px;
     padding: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+/*------------Liked Products---------------------*/
+.likedProductsContainer{
+    height: 80vh;
+    width: 70%;
+    padding: 2.5vh 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.likedProduct{
+    font-family: 'Roboto',sans-serif;
+    height: 150px;
+    width: 100%;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    display: grid;
+    grid-template-columns: 1fr 1fr 4fr 2fr;
+    align-items: center;
+}
+.likedProduct svg{
+    width: 40px;
+    justify-self: center;
+}
+.likedProduct a{
+    height: inherit;
+}
+.likedProduct a img{
+    height: inherit;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.likedProduct .productContent{
+    width: 90%;
+    padding: 0 5%;
+    margin-top: 25px;
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    gap: 5px;
+}
+.likedProduct .productContent a, .likedProduct .productContent a h3{
+    text-decoration: none;
+    color: black;
+}
+.likedProduct .productContent a h3:hover{
+    color: rgb(248, 126, 45);
+    
+}
+.likedProduct .productContent h3{
+    color: rgb(248, 126, 45);
+}
+.likedProduct .buttons{
+    width: 100%;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.likedProduct .buttons a{
+    height: auto;
+}
+.likedProduct .button{
+    background-color: black;
+    border: none;
+    width: 150px;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-size: 14px;
+    height: 40px;
+    font-weight: 600;
+}
+.likedProduct .button:hover{
+    background: lightgray;
+    color: black;
+    cursor: pointer;
+}
+.likedProduct .buttons .addToCart{
+    padding: 5px 10px;
+    width: 150px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    height: 40px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: rgb(248, 126, 45);
+}
+.likedProduct .buttons .addToCart:hover{
+    background: lightgray;
+    color: black;
+    cursor: pointer;
 }
 
 /*-----------------------------------------------*/
