@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiko:wght@400;700&family=Exo+2:wght@700;900&family=Satisfy&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto:wght@100;300;400;500;700;900&family=Rowdies:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto:wght@100;200;300;400;500;600;700;900&family=Rowdies:wght@300;700&display=swap');
 
 *{
     margin: 0;
@@ -599,7 +599,7 @@ input[type=checkbox]{
 }
 /*------------Liked Products---------------------*/
 .likedProductsContainer{
-    height: 80vh;
+    min-height: 82.5vh;
     width: 70%;
     padding: 2.5vh 15%;
     display: flex;
@@ -806,9 +806,7 @@ input[type=checkbox]{
     .topLiner{
         display: none;
     }
-
     /*--------- Landing ----------*/
-
     .mainAdvertisement{
         margin-top: 10vh;
     }
@@ -854,9 +852,14 @@ input[type=checkbox]{
         height: 100%;
         object-fit: contain;
     }
-
     .productDetailContainer .productDetail p{
         width: 100%;
+    }
+    /*--------- Liked Products ---------*/
+    .likedProductsContainer{
+        margin-top:15vh ;
+        width: 85%;
+        padding: 0 7.5%;
     }
 }
 
@@ -944,6 +947,29 @@ input[type=checkbox]{
     .productDetailContainer .productDetail div{
         min-width: 30%;
     }
+    /*--------- Liked Products ---------*/
+    .likedProductsContainer{
+        margin-top:15vh ;
+        width: 85%;
+        padding: 0 7.5%;
+    }
+    .likedProductsContainer .likedProduct{
+        grid-template-columns: 1.5fr 1.5fr 2fr;
+    }
+    .likedProductsContainer .likedProduct a{
+        width: auto;
+        margin: auto;
+    }
+    .likedProductsContainer .productContent{
+        display: none;
+    }
+    .likedProductsContainer .buttons{
+        height: auto;
+        border: none;
+    }
+    .likedProductsContainer .buttons .button, .likedProductsContainer .buttons .addToCart{
+        width: 100px;
+    }
 }
 
 @media (max-width:550px){
@@ -961,10 +987,10 @@ input[type=checkbox]{
 
 }
 
-@media (max-width:390px){
+@media (max-width:410px){
     .card{
         width: 150px;
-        min-height: 250px;
+        height: auto;
     }
     .card .productTittle{
         font-size: 18px;
@@ -980,5 +1006,15 @@ input[type=checkbox]{
     }
     .productsContainer{
         padding: 10% 0 0 0
+    }
+    /*-----------Liked Products ----------*/
+    .likedProductsContainer{
+        width: 95%;
+        padding: 0 2.5%;
+    }
+    .likedProductsContainer .buttons .button, .likedProductsContainer .buttons .addToCart{
+        width: 90px;
+        font-size: 14px;
+        font-weight: 600;
     }
 }

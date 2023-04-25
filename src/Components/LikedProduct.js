@@ -24,7 +24,7 @@ const LikedProduct = ({product}) => {
             </div>
             <div className='buttons'>
                 <Link to={`/product/${productURL}`}><button className="button">Details</button></Link>
-                <button className='addToCart'>Add to cart</button>
+                <Link><button className='addToCart'>Add to cart</button></Link>
             </div>
         </div>
     )
