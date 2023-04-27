@@ -12,6 +12,7 @@ const ContextProvider = ({children}) => {
     const [genderFilter,setGenderFilter] = useState([])
     const [colorFilter,setColorFilter] = useState([])
     const [likedProducts,setLikedProducts] = useState([])
+    const [cartProducts,setCartProducts] = useState([])
     // Import products from firebase
 
     const getDatabaseProducts = ()=>{
@@ -26,6 +27,78 @@ const ContextProvider = ({children}) => {
         }).catch((err)=>{
             console.log(err)
         })
+    }
+
+    // Set cart products
+
+    const addToCart = (product,size,quantity)=>{
+        let productSize, productQuantity
+        let cartItemKey = generateRandomId()
+
+        if(size==""||size==undefined){
+            if(product.category=='Shoes'){
+                productSize = 40
+            } else{
+                productSize = 'M'
+            }
+        } else{
+            productSize = size
+        }
+        if(quantity==undefined){
+            productQuantity=1
+        } else{
+            productQuantity = quantity
+        }
+        
+        //Check if a type of product in a specific size is already on the cart
+        if(cartProducts.length!=0){
+            //If there is, then increment the quantity of said product
+            let repeatedIndex = -1;
+            const checkForRepeated = cartProducts.some((cartItem, index) => {
+                const isMatch = cartItem.product.productId == product.productId && cartItem.order.size == productSize;
+                if (isMatch) {
+                    repeatedIndex = index
+                }
+                    return isMatch;
+                });
+            if(checkForRepeated){
+                let replaceCartItem = [...cartProducts]
+                if(repeatedIndex!=-1){
+                    replaceCartItem[repeatedIndex].order.quantity = replaceCartItem[repeatedIndex].order.quantity + productQuantity
+                }
+                setCartProducts(replaceCartItem)
+            } else{
+            //If there isn't any, then add said product with said size to the cart
+                const cartItem = {
+                    product:{
+                        ...product
+                    },
+                    order:{
+                        size: productSize,
+                        quantity: productQuantity,
+                        orderId: cartItemKey
+                    }
+                }
+                let addCartProduct = [...cartProducts]
+                addCartProduct.push(cartItem)
+                setCartProducts(addCartProduct)
+            }
+        }else{
+            //If the array is empty, there is no need to check for repeated elements
+            const cartItem = {
+                product:{
+                    ...product
+                },
+                order:{
+                    size: productSize,
+                    quantity: productQuantity,
+                    orderId: cartItemKey
+                }
+            }
+            let addCartProduct = [...cartProducts]
+            addCartProduct.push(cartItem)
+            setCartProducts(addCartProduct)
+        }
     }
 
     // Set liked products
@@ -66,6 +139,17 @@ const ContextProvider = ({children}) => {
             likedProductsUpdate.splice(index, 1)
         }
         setLikedProducts(likedProductsUpdate)
+    }
+
+    // Generate random ID - Used in cart items
+
+    function generateRandomId() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < 15; i++) {
+          result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return result;
     }
 
     // Sidebar filter function
@@ -194,8 +278,11 @@ const ContextProvider = ({children}) => {
         setProducts,
         setShowProducts,
         convertURL,
+        generateRandomId,
         likeProduct,
         removeLikedProduct,
+        addToCart,
+        cartProducts,
         likedProducts,
         showProducts,
         products

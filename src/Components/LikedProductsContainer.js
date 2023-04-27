@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react'
-import { useContext } from 'react'
+import React, { useEffect,useContext } from 'react'
 import { context } from './Context'
 import LikedProduct from './LikedProduct'
 
 const LikedProductsContainer = () => {
     const {likedProducts} = useContext(context)
-    useEffect(()=>{
-    },[likedProducts])
 
     return (
         <>

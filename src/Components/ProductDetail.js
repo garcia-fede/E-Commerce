@@ -16,27 +16,28 @@ const ProductDetail = () => {
     const {productURL} = useParams()
     const [detailedProduct,setDetailedProduct] = useState(defaultProduct)
     const [quantity,setQuantity] = useState(1)
-    const {products,convertURL,getDatabaseProducts,likeProduct,likedProducts} = useContext(context)
+    const [size,setSize] = useState("")
+    const {products,convertURL,getDatabaseProducts,likeProduct,addToCart} = useContext(context)
 
     let categorySize = ""
     if(detailedProduct.category=='Shoes'){
         categorySize = 
-        <select className="selectSize">
-            <option value="">36</option>
-            <option value="">38</option>
-            <option value="">40</option>
-            <option value="">42</option>
-            <option value="">44</option>
+        <select className="selectSize" defaultValue={"40"} onChange={(e)=>{setSize(e.target.value)}} >
+            <option value="36">36</option>
+            <option value="38">38</option>
+            <option value="40" selected>40</option>
+            <option value="42">42</option>
+            <option value="44">44</option>
         </select>
     }
     else{
         categorySize = 
-        <select className="selectSize" defaultValue={""}>
-            <option value="">XS</option>
-            <option value="">S</option>
-            <option value="">M</option>
-            <option value="">L</option>
-            <option value="">XL</option>
+        <select className="selectSize" defaultValue={"M"} onChange={(e)=>{setSize(e.target.value)}} >
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M" selected>M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
         </select>
     }
 
@@ -93,7 +94,7 @@ const ProductDetail = () => {
                         </button>
                     </div>
                     <div>
-                        <button className="addToCart">Add to cart</button>
+                        <button className="addToCart" onClick={()=>{addToCart(detailedProduct,size,quantity)}}>Add to cart</button>
                         <button className='likeButton' onClick={(e)=>{likeProduct(e.target,detailedProduct)}}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

@@ -435,18 +435,18 @@ input[type=checkbox]{
     color: black;
     cursor: pointer;
 }
-.card a:nth-child(2) .button{
+.card .button{
     background-color: rgb(248, 126, 45);
     border: none;
 }
-.card a:nth-child(2) .button:hover{
+.card .button:hover{
     cursor: pointer;
     background: lightgray;
 }
-.card a:nth-child(2) .button:hover svg{
+.card .button:hover svg{
     stroke: black;
 }
-.card .buttons a .button{
+.card .buttons .button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -597,8 +597,8 @@ input[type=checkbox]{
     border-radius: 5px;
     margin-bottom: 10px;
 }
-/*------------Liked Products---------------------*/
-.likedProductsContainer{
+/*------------Liked & Cart Products---------------------*/
+.likedProductsContainer, .cartProductsContainer{
     min-height: 82.5vh;
     width: 70%;
     padding: 2.5vh 15%;
@@ -606,7 +606,7 @@ input[type=checkbox]{
     flex-direction: column;
     gap: 25px;
 }
-.likedProduct{
+.likedProduct, .cartProduct{
     font-family: 'Roboto',sans-serif;
     height: 150px;
     width: 100%;
@@ -616,19 +616,19 @@ input[type=checkbox]{
     grid-template-columns: 1fr 1fr 4fr 2fr;
     align-items: center;
 }
-.likedProduct svg{
+.likedProduct svg, .cartProduct svg{
     width: 40px;
     justify-self: center;
 }
-.likedProduct a{
+.likedProduct a, .cartProduct a{
     height: inherit;
 }
-.likedProduct a img{
+.likedProduct a img, .cartProduct a img{
     height: inherit;
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
-.likedProduct .productContent{
+.likedProduct .productContent, .cartProduct .productContent{
     width: 90%;
     padding: 0 5%;
     margin-top: 25px;
@@ -637,18 +637,17 @@ input[type=checkbox]{
     flex-direction: column;
     gap: 5px;
 }
-.likedProduct .productContent a, .likedProduct .productContent a h3{
+.likedProduct .productContent a, .likedProduct .productContent a h3, .cartProduct .productContent a, .cartProduct .productContent a h3{
     text-decoration: none;
     color: black;
 }
-.likedProduct .productContent a h3:hover{
-    color: rgb(248, 126, 45);
-    
-}
-.likedProduct .productContent h3{
+.likedProduct .productContent a h3:hover, .cartProduct .productContent a h3:hover{
     color: rgb(248, 126, 45);
 }
-.likedProduct .buttons{
+.likedProduct .productContent h3, .cartProduct .productContent h3{
+    color: rgb(248, 126, 45);
+}
+.likedProduct .buttons, .cartProduct .buttons{
     width: 100%;
     height: inherit;
     display: flex;
@@ -659,10 +658,10 @@ input[type=checkbox]{
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
-.likedProduct .buttons a{
+.likedProduct .buttons a, .cartProduct .buttons a{
     height: auto;
 }
-.likedProduct .button{
+.likedProduct .button, .cartProduct .button{
     background-color: black;
     border: none;
     width: 150px;
@@ -674,12 +673,12 @@ input[type=checkbox]{
     height: 40px;
     font-weight: 600;
 }
-.likedProduct .button:hover{
+.likedProduct .button:hover, .cartProduct .button:hover{
     background: lightgray;
     color: black;
     cursor: pointer;
 }
-.likedProduct .buttons .addToCart{
+.likedProduct .buttons .addToCart, .cartProduct .buttons .addToCart{
     padding: 5px 10px;
     width: 150px;
     font-size: 14px;
@@ -692,7 +691,7 @@ input[type=checkbox]{
     color: white;
     background: rgb(248, 126, 45);
 }
-.likedProduct .buttons .addToCart:hover{
+.likedProduct .buttons .addToCart:hover, .cartProduct .buttons .addToCart:hover{
     background: lightgray;
     color: black;
     cursor: pointer;
