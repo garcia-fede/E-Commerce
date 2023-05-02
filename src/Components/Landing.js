@@ -7,7 +7,6 @@ import Socials from './Socials';
 import { context } from './Context';
 
 const Landing = () => {
-
     const {showProducts,getDatabaseProducts} =useContext(context)
 
     useEffect(()=>{

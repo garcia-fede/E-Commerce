@@ -3,6 +3,9 @@ import { context } from './Context'
 import CartProduct from './CartProduct'
 
 const CartProductsContainer = () => {
+    //Scroll to top of component
+    window.scrollTo(0,0)
+    
     const {cartProducts} = useContext(context)
     return (
         <>

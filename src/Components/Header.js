@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '../Images/Logo.png'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { context } from './Context'
 
 const Header = () => {
+    const {cartProducts} = useContext(context)
+    const [cartQuantity,setCartQuantity] = useState(0)
+
+    useEffect(()=>{
+        let quantity = 0
+        if(cartProducts.length==0){
+            setCartQuantity(0)
+        } else{
+            cartProducts.map(product=>{
+                quantity = quantity+product.order.quantity
+                setCartQuantity(quantity)
+            })
+        }
+    },[cartProducts])
     return (
         <>
-            <header>
+            <header id='headerElement'>
                 <div className="topLiner"></div>
                 <nav>
                     <div className="logoContainer">
@@ -33,19 +49,22 @@ const Header = () => {
                         </li>
                         <li className='interactContainer'>
                             <Link to="/liked-products">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="icon" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                <svg id='likeHeart' xmlns="http://www.w3.org/2000/svg" className="icon" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                     <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
                                 </svg>
                             </Link>
                             <Link to="shopcart">
-                                <svg id='shopCart' xmlns="http://www.w3.org/2000/svg" className="icon" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <circle cx="6" cy="19" r="2" />
-                                    <circle cx="17" cy="19" r="2" />
-                                    <path d="M17 17h-11v-14h-2" />
-                                    <path d="M6 5l14 1l-1 7h-13" />
-                                </svg>
+                                <span id='shopCartContainer' className='icon'>
+                                    <svg id='shopCart' xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <circle cx="6" cy="19" r="2" />
+                                        <circle cx="17" cy="19" r="2" />
+                                        <path d="M17 17h-11v-14h-2" />
+                                        <path d="M6 5l14 1l-1 7h-13" />
+                                    </svg>
+                                    <span id='cartQuantity'>{cartQuantity}</span>
+                                </span>
                             </Link>
                         </li>
                     </ul>

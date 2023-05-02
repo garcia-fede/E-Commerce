@@ -13,6 +13,7 @@ const ContextProvider = ({children}) => {
     const [colorFilter,setColorFilter] = useState([])
     const [likedProducts,setLikedProducts] = useState([])
     const [cartProducts,setCartProducts] = useState([])
+    
     // Import products from firebase
 
     const getDatabaseProducts = ()=>{
@@ -29,11 +30,13 @@ const ContextProvider = ({children}) => {
         })
     }
 
-    // Set cart products
+    // Add cart products
 
     const addToCart = (product,size,quantity)=>{
         let productSize, productQuantity
         let cartItemKey = generateRandomId()
+        let shopCart = document.getElementById('shopCartContainer')
+        shopCart.classList.add('bounce')
 
         if(size==""||size==undefined){
             if(product.category=='Shoes'){
@@ -99,13 +102,29 @@ const ContextProvider = ({children}) => {
             addCartProduct.push(cartItem)
             setCartProducts(addCartProduct)
         }
+        setTimeout(() => {
+            shopCart.classList.remove('bounce');
+        }, 500);
     }
 
+    // Remove cart items
+
+    const removeCartItem = (product)=>{
+        let cartProductsUpdate = [...cartProducts]
+        let index = cartProducts.indexOf(product)
+        if(index>-1){
+            cartProductsUpdate.splice(index, 1)
+        }
+        setCartProducts(cartProductsUpdate)
+    }
     // Set liked products
 
     const likeProduct = (targetSVG,product)=>{
         let productId = product.productId
         let addLikedProduct = [...likedProducts]
+        let likeHeart = document.getElementById('likeHeart')
+        likeHeart.classList.add('bounce')
+
         if(likedProducts.length==0){
             addLikedProduct.push(product)
             setLikedProducts(addLikedProduct)
@@ -130,7 +149,12 @@ const ContextProvider = ({children}) => {
                 setLikedProducts(addLikedProduct)
             }
         }
+        setTimeout(() => {
+            likeHeart.classList.remove('bounce');
+        }, 500);
     }
+
+    // Remove liked products
 
     const removeLikedProduct = (product)=>{
         let likedProductsUpdate = [...likedProducts]
@@ -282,6 +306,7 @@ const ContextProvider = ({children}) => {
         likeProduct,
         removeLikedProduct,
         addToCart,
+        removeCartItem,
         cartProducts,
         likedProducts,
         showProducts,

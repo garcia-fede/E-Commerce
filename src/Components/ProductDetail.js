@@ -5,6 +5,10 @@ import { useContext } from 'react'
 import { context } from './Context'
 
 const ProductDetail = () => {
+    //Scroll to top of component
+    window.scrollTo(0,0)
+    
+    //Load fail product if necessary
     const defaultProduct = {
         tittle: "Loading",
         image: "Loading",
@@ -78,18 +82,18 @@ const ProductDetail = () => {
                 <p>{detailedProduct.description}</p>
                 <div className="buttons">
                     <div>
+                        <button className='substractButton' onClick={()=>{updateQuantity(false)}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FFFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <line x1="8" y1="12" x2="16" y2="12" />
+                            </svg>
+                        </button>
+                        <div className="quantityInput">{quantity}</div>
                         <button className='addButton' onClick={()=>{updateQuantity(true)}}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FFFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <line x1="12" y1="7" x2="12" y2="17" />
                                 <line x1="7" y1="12" x2="17" y2="12" />
-                            </svg>
-                        </button>
-                        <div className="quantityInput">{quantity}</div>
-                        <button className='substractButton' onClick={()=>{updateQuantity(false)}}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FFFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <line x1="8" y1="12" x2="16" y2="12" />
                             </svg>
                         </button>
                     </div>

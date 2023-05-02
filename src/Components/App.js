@@ -8,18 +8,19 @@ import LikedProductsContainer from './LikedProductsContainer';
 import CartProductsContainer from './CartProductsContainer';
 
 function App() {
+
   return (
     <>
       <ContextProvider>
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path='/' element={<Landing />} />
-            <Route path='/product/:productURL' element={<ProductDetail />} />
-            <Route path='/liked-products' element={<LikedProductsContainer />} />
-            <Route path='/shopcart' element={<CartProductsContainer />} />
-            {/* <Route path='/' element={<About />} /> */}
-            {/* <Route path='/' element={<Contact />} /> */}
+              <Route path='/' element={<Landing />} />
+              <Route path='/product/:productURL' element={<ProductDetail />} />
+              <Route path='/liked-products' element={<LikedProductsContainer />} />
+              <Route path='/shopcart' element={<CartProductsContainer />} />
+              {/* <Route path='/' element={<About />} /> */}
+              {/* <Route path='/' element={<Contact />} /> */}
           </Routes>
         </BrowserRouter>
       </ContextProvider>

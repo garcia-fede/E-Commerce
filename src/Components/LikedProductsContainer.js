@@ -3,6 +3,9 @@ import { context } from './Context'
 import LikedProduct from './LikedProduct'
 
 const LikedProductsContainer = () => {
+    //Scroll to top of component
+    window.scrollTo(0,0)
+    
     const {likedProducts} = useContext(context)
 
     return (
