@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect,useState,useContext } from 'react';
+import { useEffect,useRef,useContext } from 'react';
 import WebsiteInfo from './WebsiteInfo';
 import Sidebar from './Sidebar';
 import Card from './Card';
@@ -7,8 +7,15 @@ import Socials from './Socials';
 import { context } from './Context';
 
 const Landing = () => {
-    const {showProducts,getDatabaseProducts} =useContext(context)
+    const isMountedRef = useRef(false);
+    useEffect(() => {
+        if (!isMountedRef.current) {
+        window.scroll(0, 0);
+        isMountedRef.current = true;
+        }
+    }, []);
 
+    const {showProducts,getDatabaseProducts} = useContext(context)
     useEffect(()=>{
         getDatabaseProducts()
     },[])

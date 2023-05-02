@@ -1,12 +1,19 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useRef } from 'react'
 import { useContext } from 'react'
 import { context } from './Context'
 
 const ProductDetail = () => {
     //Scroll to top of component
-    window.scrollTo(0,0)
+    const isMountedRef = useRef(false);
+
+    useEffect(() => {
+        if (!isMountedRef.current) {
+        window.scroll(0, 0);
+        isMountedRef.current = true;
+        }
+    }, []);
     
     //Load fail product if necessary
     const defaultProduct = {

@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiko:wght@400;700&family=Exo+2:wght@700;900&family=Satisfy&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto:wght@100;200;300;400;500;600;700;900&family=Rowdies:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto:wght@100;300;400;500;700;900&family=Rowdies:wght@300;700&display=swap');
 
 *{
     margin: 0;
     padding: 0;
 }
-body{
-    min-height: 100vh;
-}
+
 /*------------------ Work in progress -------------*/
 .WIP{
     display: flex;
@@ -138,8 +136,9 @@ header nav ul li:nth-child(3){
 }
 .bounce{
     animation: bounce 0.5s;
+    stroke: black;
+    stroke-width: 1.5;
     fill: rgb(248, 126, 45);
-    stroke: rgb(248, 126, 45);
 }
 @keyframes bounce {
     0% {
@@ -485,8 +484,15 @@ input[type=checkbox]{
     cursor: pointer;
     background: lightgray;
 }
+.card .button:active{
+    background: red;
+    color: white;
+}
 .card .button:hover svg{
     stroke: black;
+}
+.card .button:active svg{
+    stroke: white;
 }
 .card .buttons .button{
     display: flex;
@@ -633,6 +639,11 @@ input[type=checkbox]{
     color: black;
     cursor: pointer;
 }
+.productDetailContainer .buttons .likeButton:active, .productDetailContainer .buttons .likeButton:active svg, .productDetailContainer .buttons .addToCart:active{
+    background: red;
+    color: white;
+    stroke: white;
+}
 .productDetailContainer .productDetail select{
     margin-left: 15px;
     width: 80px;
@@ -642,13 +653,76 @@ input[type=checkbox]{
 }
 /*------------Liked & Cart Products---------------------*/
 .likedProductsContainer, .cartProductsContainer{
-    margin-top: 12.5vh;
-    min-height: 82.5vh;
+    height: auto;
     width: 70%;
     padding: 2.5vh 15%;
     display: flex;
     flex-direction: column;
     gap: 25px;
+    margin-bottom: 100px;
+}
+.websitePath{
+    width: 70%;
+    padding: 0 15%;
+    margin-top: 17.5vh;
+    font-family: 'Roboto',sans-serif;
+    font-size: 14px;
+}
+.websitePath p{
+    display: flex;
+    width: auto;
+    gap: 10px;
+    color: rgba(0, 0, 0, 0.75);
+}
+.websitePath span{
+    color: rgb(248, 126, 45);
+}
+.sectionTitle{
+    width: 70%;
+    padding: 0 15%;
+    margin: 5vh 0;
+    height: 20vh;
+    background: rgb(247, 247, 247);
+    display: flex;
+    align-items: center;
+}
+.sectionTitle h1{
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 32px;
+    font-family: 'Roboto',sans-serif;
+}
+.sectionTitle h1 svg{
+    height: 35px;
+}
+.emptySection{
+    width: 95%;
+    background: rgb(247, 247, 247);
+    display: flex;
+    padding: 25px 2.5%;
+    align-items: center;
+    gap: 25px;
+    font-family: 'Roboto',sans-serif;
+    border-top: 2px solid rgb(248, 126, 45);
+}
+.emptySection h3{
+    font-weight: 400;
+}
+.returnToProducts button{
+    padding: 15px 25px;
+    font-family: 'Roboto',sans-serif;
+    font-size: 16px;
+    background: rgb(248, 126, 45);
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+.returnToProducts button:hover{
+    color: black;
+    background: lightgray;
+    cursor: pointer;
 }
 .likedProduct, .cartProduct{
     font-family: 'Roboto',sans-serif;
@@ -690,6 +764,10 @@ input[type=checkbox]{
 }
 .likedProduct .productContent h3, .cartProduct .productContent h3{
     color: rgb(248, 126, 45);
+}
+.cartProduct .productContent .quantity{
+    display: flex;
+    gap: 5px;
 }
 .likedProduct .buttons, .cartProduct .buttons{
     width: 100%;
@@ -898,9 +976,8 @@ input[type=checkbox]{
     .productDetailContainer .productDetail p{
         width: 100%;
     }
-    /*--------- Liked Products ---------*/
-    .likedProductsContainer{
-        margin-top:15vh ;
+    /*--------- Cart & Liked Products ---------*/
+    .likedProductsContainer, .cartProductsContainer{
         width: 85%;
         padding: 0 7.5%;
     }
@@ -990,9 +1067,8 @@ input[type=checkbox]{
     .productDetailContainer .productDetail div{
         min-width: 30%;
     }
-    /*--------- Liked Products ---------*/
-    .likedProductsContainer{
-        margin-top:15vh ;
+    /*--------- Cart & Liked Products ---------*/
+    .likedProductsContainer, .cartProductsContainer{
         width: 85%;
         padding: 0 7.5%;
     }
@@ -1006,11 +1082,15 @@ input[type=checkbox]{
     .likedProductsContainer .productContent{
         display: none;
     }
+    
     .likedProductsContainer .buttons{
         height: auto;
         border: none;
     }
-    .likedProductsContainer .buttons .button, .likedProductsContainer .buttons .addToCart{
+    .likedProductsContainer .buttons .button, .likedProductsContainer .buttons .addToCart, .cartProductsContainer .buttons .button{
+        width: 100px;
+    }
+    .cartProductsContainer .buttons .addToCart{
         width: 100px;
     }
 }
@@ -1027,7 +1107,35 @@ input[type=checkbox]{
         padding-bottom: 25px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     }
+    /*----- Cart Products Container -------*/
+    .cartProductsContainer .cartProduct{
+        grid-template-columns: 1fr 1fr 2fr 2fr;
+    }
+    .cartProductsContainer .productContent{
+        align-self: center;
+        margin-top: 0;
+        flex-direction: row;
+        width: auto;
+        padding: 0;
+        margin: 0 10px;   
+    }
+    .cartProductsContainer .productContent span{
+        font-size: 16px;
+        align-self: center;
+    }
+    .cartProductsContainer .productContent .itemInfo a, .cartProductsContainer .productContent p{
+        display: none;
+    }
+}
 
+@media (max-width:550px){
+    .cartProductsContainer .productContent{
+        flex-direction: column;
+    }
+    .cartProductsContainer .buttons .button{
+        width: 90px;
+        /* font-size: 10px; */
+    }
 }
 
 @media (max-width:410px){
@@ -1051,7 +1159,7 @@ input[type=checkbox]{
         padding: 10% 0 0 0
     }
     /*-----------Liked Products ----------*/
-    .likedProductsContainer{
+    .likedProductsContainer,.cartProductsContainer{
         width: 95%;
         padding: 0 2.5%;
     }

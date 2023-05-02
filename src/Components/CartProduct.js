@@ -25,7 +25,9 @@ const CartProduct = ({cartItem}) => {
                     <p>{cartItem.product.description}</p>
                 </div>
                 <p>Size: {cartItem.order.size}</p>
-                <p>Quantity: {cartItem.order.quantity}</p>
+                <div className="quantity">
+                    <p>Quantity: </p><span>x {cartItem.order.quantity}</span>
+                </div>
             </div>
             <div className='buttons'>
                 <Link to={`/product/${productURL}`}><button className="button">Details</button></Link>
