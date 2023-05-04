@@ -12,9 +12,9 @@ const CartProductsContainer = () => {
         isMountedRef.current = true;
         }
     }, []);
-
+    const {cartProducts,cartTotal,discardProducts} = useContext(context)
     let divider = " > "
-    const {cartProducts} = useContext(context)
+
     return (
         <>
             <div className="websitePath">
@@ -33,11 +33,20 @@ const CartProductsContainer = () => {
             </div>  
             <div className='cartProductsContainer'>
                 {cartProducts.length > 0 ? (
-                    cartProducts.map((cartItem) => {
-                        return <CartProduct key={cartItem.order.orderId} cartItem={cartItem} />;
-                    })
+                    <section>
+                        {cartProducts.map((cartItem) => {
+                            return <CartProduct key={cartItem.order.orderId} cartItem={cartItem} />;
+                        })}
+                        <div className="messageSection">
+                            <div className="cartButtons">
+                                <button>Checkout</button>
+                                <button onClick={()=>{discardProducts()}}>Discard all</button>
+                            </div>
+                            <h2>Total: {(cartTotal).toFixed(2)}</h2>
+                        </div>
+                    </section>
                     ) : (
-                    <div className='emptySection'>
+                    <div className='messageSection'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="6" cy="19" r="2" />

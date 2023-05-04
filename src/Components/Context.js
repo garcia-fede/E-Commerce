@@ -13,6 +13,8 @@ const ContextProvider = ({children}) => {
     const [colorFilter,setColorFilter] = useState([])
     const [likedProducts,setLikedProducts] = useState([])
     const [cartProducts,setCartProducts] = useState([])
+    const [cartQuantity,setCartQuantity] = useState(0)
+    const [cartTotal,setCartTotal] = useState(0)
     
     // Import products from firebase
 
@@ -28,6 +30,12 @@ const ContextProvider = ({children}) => {
         }).catch((err)=>{
             console.log(err)
         })
+    }
+
+    // Discard cart products
+
+    const discardProducts = ()=>{
+        setCartProducts([])
     }
 
     // Add cart products
@@ -117,6 +125,24 @@ const ContextProvider = ({children}) => {
         }
         setCartProducts(cartProductsUpdate)
     }
+
+    // Update Header Cart
+    const updateCartQuantity = ()=>{
+        let quantity = 0
+        if(cartProducts.length==0){
+            setCartQuantity(0)
+            setCartTotal(0)
+        } else{
+            let checkoutTotal = 0;
+            cartProducts.map(product=>{
+                quantity = quantity+product.order.quantity
+                checkoutTotal = checkoutTotal+(product.order.quantity*product.product.price)
+                setCartQuantity(quantity)
+            })
+            setCartTotal(checkoutTotal)
+        }
+    }
+
     // Set liked products
 
     const likeProduct = (targetSVG,product)=>{
@@ -301,12 +327,20 @@ const ContextProvider = ({children}) => {
         removeFilter,
         setProducts,
         setShowProducts,
+        setClothesFilter,
+        setGenderFilter,
+        setColorFilter,
         convertURL,
         generateRandomId,
         likeProduct,
         removeLikedProduct,
         addToCart,
         removeCartItem,
+        setCartQuantity,
+        updateCartQuantity,
+        discardProducts,
+        cartTotal,
+        cartQuantity,
         cartProducts,
         likedProducts,
         showProducts,

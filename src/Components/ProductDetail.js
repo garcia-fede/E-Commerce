@@ -68,9 +68,9 @@ const ProductDetail = () => {
         })
     },[products])
 
-    const updateQuantity = (Boolean)=>{
+    const updateQuantity = (isIncrement)=>{
         let newQuantity = quantity
-        if(Boolean){
+        if(isIncrement){
             newQuantity = newQuantity + 1
         } else if(newQuantity>1){
             newQuantity = newQuantity - 1

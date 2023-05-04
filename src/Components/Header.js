@@ -5,19 +5,10 @@ import { useContext } from 'react'
 import { context } from './Context'
 
 const Header = () => {
-    const {cartProducts} = useContext(context)
-    const [cartQuantity,setCartQuantity] = useState(0)
-
+    const {cartProducts,cartQuantity,setCartQuantity,updateCartQuantity} = useContext(context)
+    
     useEffect(()=>{
-        let quantity = 0
-        if(cartProducts.length==0){
-            setCartQuantity(0)
-        } else{
-            cartProducts.map(product=>{
-                quantity = quantity+product.order.quantity
-                setCartQuantity(quantity)
-            })
-        }
+        updateCartQuantity()
     },[cartProducts])
     return (
         <>

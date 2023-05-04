@@ -15,10 +15,14 @@ const Landing = () => {
         }
     }, []);
 
-    const {showProducts,getDatabaseProducts} = useContext(context)
+    const {showProducts,getDatabaseProducts,setGenderFilter,setColorFilter,setClothesFilter} = useContext(context)
     useEffect(()=>{
         getDatabaseProducts()
+        setClothesFilter([])
+        setGenderFilter([])
+        setColorFilter([])
     },[])
+
 
     return (
         <>
