@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import Logo from '../Images/Logo.png'
+import mountainLogo from '../Images/mountainLogo.png'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { context } from './Context'
 
 const Header = () => {
-    const {cartProducts,cartQuantity,setCartQuantity,updateCartQuantity} = useContext(context)
+    const {cartProducts,cartQuantity,setCartQuantity,updateCartQuantity,setSlideContent} = useContext(context)
     
     useEffect(()=>{
         updateCartQuantity()
     },[cartProducts])
 
-    const handleFunction = ()=>{
-        const about = document.getElementById("about");
-        about.style.left=0;
+    const slideIn = (String)=>{
+        setSlideContent(String)
+        const slide = document.getElementById("slide");
+        slide.style.left=0;
+        slide.style.borderTopRightRadius = "0%";
+        slide.style.borderBottomRightRadius = "0%";
     }
     return (
         <>
@@ -22,6 +26,7 @@ const Header = () => {
                 <nav>
                     <div className="logoContainer">
                         <Link to="/">
+                            <img src={mountainLogo} className='logo' alt="Logo - Chilly Peaks" />
                             <img src={Logo} className='logo' alt="Logo - Chilly Peaks" />
                         </Link>
                     </div>
@@ -33,8 +38,9 @@ const Header = () => {
                     </label>
                     <ul>
                         <li><Link to="/">Products</Link></li>
-                        <li onClick={handleFunction}><a>About us</a></li>
-                        <li><a href="">Contact</a></li>
+                        <li onClick={()=>{slideIn("About")}}><a>About us</a></li>
+                        <li><a>Contact</a></li>
+                        {/* <li onClick={()=>{slideIn("Contact")}}><a>Contact</a></li> */}
                         <li className='searchBar'>
                             <input type="text" placeholder='Search product by name...' />
                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">

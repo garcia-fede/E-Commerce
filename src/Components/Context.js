@@ -15,6 +15,7 @@ const ContextProvider = ({children}) => {
     const [cartProducts,setCartProducts] = useState([])
     const [cartQuantity,setCartQuantity] = useState(0)
     const [cartTotal,setCartTotal] = useState(0)
+    const [slideContent,setSlideContent] = useState(true)
     
     // Import products from firebase
 
@@ -339,12 +340,14 @@ const ContextProvider = ({children}) => {
         setCartQuantity,
         updateCartQuantity,
         discardProducts,
+        setSlideContent,
         cartTotal,
         cartQuantity,
         cartProducts,
         likedProducts,
         showProducts,
-        products
+        products,
+        slideContent
     }
 
     return (

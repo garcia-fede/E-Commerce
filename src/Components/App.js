@@ -6,7 +6,7 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import ProductDetail from './ProductDetail';
 import LikedProductsContainer from './LikedProductsContainer';
 import CartProductsContainer from './CartProductsContainer';
-import About from './About';
+import SlideContent from './SlideContent';
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
       <ContextProvider>
         <BrowserRouter>
           <Header />
-          <About />
+          <SlideContent />
           <Routes>
               <Route path='/' element={<Landing />} />
               <Route path='/product/:productURL' element={<ProductDetail />} />

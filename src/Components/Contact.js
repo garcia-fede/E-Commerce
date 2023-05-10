@@ -2,7 +2,7 @@ import React from 'react'
 import mountainLogo from '../Images/mountainLogo.png'
 import Logo from '../Images/Logo.png'
 
-const About = () => {
+const Contact = () => {
     const slideOutAbout = ()=>{
         const slide = document.getElementById("slide");
         slide.style.left="-100%";
@@ -25,14 +25,11 @@ const About = () => {
                         <img src={mountainLogo} id="mountainLogo" alt="Logo" />
                         <img src={Logo} id="textLogo" alt="Logo" />
                     </div>
-                    <h2>About Us:</h2>
-                    <p>At Chilly Peaks, we're dedicated to providing you with the best quality and stylish clothing for any occasion.</p>
-                    <p>With a team of experienced fashion designers, we know how to create comfortable and fashionable clothing that you'll love to wear.</p>
-                    <p>Whether you're looking for casual wear or something more formal, we've got you covered with a wide range of top-quality clothing to choose from.</p>
+                    <h2>Contact</h2>
                 </div>
             </div>
         </div>
     )
 }
 
-export default About
+export default Contact

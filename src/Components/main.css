@@ -48,6 +48,7 @@ header nav ul{
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr 4fr 1fr;
 }
+
 header nav ul li{
     height: 100%;
     display: flex;
@@ -236,23 +237,26 @@ header .topLiner{
     transform-origin: bottom left;
 }
 /*------------------ About Slide ----------------*/
-
 .aboutContainer{
     width: 70%;
-    padding: 17.5vh 15%;
-    height: 65vh;
-    background: rgb(0, 0, 65);
+    padding: 12.5vh 15%;
+    height: 75vh;
+    background: linear-gradient(-45deg, rgba(88, 35, 0) 0%, rgb(6, 6, 6) 25%, rgba(6,6,6,1) 75%, rgb(88, 35, 0) 100%);
     position: fixed;
+    color: #121212;
     top: 0;
     left: -100%;
+    border-top-right-radius: 5% 50%;
+    border-bottom-right-radius: 5% 50%;
     z-index: 15;
     color: white;
     font-family: 'Roboto',sans-serif;
-    transition: 0.5s ease-in-out;
+    transition: 0.75s ease-in-out;
     display: flex;
+    align-items: center;
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.15);
 }
 .closeAbout{
-    align-self: center;
     display: flex;
     width: 10%;
     margin-right: 5%;
@@ -268,14 +272,39 @@ header .topLiner{
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.5s;
 }
 .closeAbout button svg{
     transform: translateX(-2.5px);
     width: 50px;
     height: 50px;
 }
+.closeAbout button:hover{
+    background: rgb(248, 126, 45);
+    cursor: pointer;
+    transform: translateX(-15%);
+}
+.closeAbout button:hover svg{
+    stroke: white;
+}
 .aboutContent{
     width: 85%;
+}
+.aboutInfo img{
+    width: 50%;
+    filter: invert(100%) drop-shadow(16px 16px 2px rgba(0,0,0,0.15));
+    transform: translateX(-5%);
+    margin-bottom: 15px;
+    pointer-events: none;
+}
+.aboutInfo .logos{
+    margin-bottom: 25px;
+}
+.aboutInfo #mountainLogo{
+    margin-right: 25px;
+    height: 100px;
+    width: auto;
+    filter: invert(100%) drop-shadow(4px 4px 2px rgba(0,0,0,0.25));
 }
 .aboutInfo{
     display: flex;
@@ -286,14 +315,8 @@ header .topLiner{
 .aboutInfo h2{
     font-size: 30px;
 }
-.aboutInfo p, .aboutContact{
+.aboutInfo p{
     font-size: 24px;
-    list-style: none;
-}
-.aboutContact{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
 }
 
 /*-------------------Landing---------------------*/
@@ -1369,5 +1392,30 @@ input[type=checkbox]{
     }
     .returnToProducts{
         margin-left: 10px;
+    }
+    /*---------- About -------------*/
+    .aboutContainer{
+        width: 95%;
+        padding: 2.5vh 2.5%;
+        height: 95vh;
+    }
+    .closeAbout{
+        width: 15%;
+    }
+    .closeAbout button{
+        width: 50px;
+        aspect-ratio: 1;
+    }
+    .aboutContent{
+        padding: 0;
+    }
+    .aboutInfo{
+        width: inherit;
+    }
+    .aboutInfo h2{
+        font-size: 16px;
+    }
+    .aboutInfo p, .aboutContact li{
+        font-size: 14px;
     }
 }
