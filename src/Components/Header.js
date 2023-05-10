@@ -10,6 +10,11 @@ const Header = () => {
     useEffect(()=>{
         updateCartQuantity()
     },[cartProducts])
+
+    const handleFunction = ()=>{
+        const about = document.getElementById("about");
+        about.style.left=0;
+    }
     return (
         <>
             <header id='headerElement'>
@@ -28,7 +33,7 @@ const Header = () => {
                     </label>
                     <ul>
                         <li><Link to="/">Products</Link></li>
-                        <li><Link to="/about">About us</Link></li>
+                        <li onClick={handleFunction}><a>About us</a></li>
                         <li><a href="">Contact</a></li>
                         <li className='searchBar'>
                             <input type="text" placeholder='Search product by name...' />
