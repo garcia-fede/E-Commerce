@@ -17,6 +17,11 @@
     font-size: 60px;
     font-family: 'Roboto',sans-serif;
 }
+/*----------------- Lock Scrolling ----------------*/
+.lock-scroll {
+    overflow: hidden;
+}
+
 /*------------------ Header -----------------------*/
 .hamburgerButton,.hamburgerButtonDisplay{
     display: none;
@@ -236,12 +241,15 @@ header .topLiner{
     transform: rotate(-45deg);
     transform-origin: bottom left;
 }
+
 /*------------------ About Slide ----------------*/
 .aboutContainer{
     width: 70%;
     padding: 12.5vh 15%;
     height: 75vh;
-    background: linear-gradient(-45deg, rgba(88, 35, 0) 0%, rgb(6, 6, 6) 25%, rgba(6,6,6,1) 75%, rgb(88, 35, 0) 100%);
+    background:url(../Images/aboutBg.jpg);
+    background-size: cover;
+    /* background: linear-gradient(-45deg, rgba(88, 35, 0) 0%, rgb(6, 6, 6) 25%, rgba(6,6,6,1) 75%, rgb(88, 35, 0) 100%); */
     position: fixed;
     color: #121212;
     top: 0;
@@ -249,7 +257,6 @@ header .topLiner{
     border-top-right-radius: 5% 50%;
     border-bottom-right-radius: 5% 50%;
     z-index: 15;
-    color: white;
     font-family: 'Roboto',sans-serif;
     transition: 0.75s ease-in-out;
     display: flex;
@@ -266,7 +273,7 @@ header .topLiner{
 .closeAbout button{
     width: 75px;
     aspect-ratio: 1;
-    background: lightgray;
+    background: black;
     border: none;
     border-radius: 50%;
     display: flex;
@@ -292,7 +299,7 @@ header .topLiner{
 }
 .aboutInfo img{
     width: 50%;
-    filter: invert(100%) drop-shadow(16px 16px 2px rgba(0,0,0,0.15));
+    filter: drop-shadow(16px 16px 2px rgba(0,0,0,0.15));
     transform: translateX(-5%);
     margin-bottom: 15px;
     pointer-events: none;
@@ -304,7 +311,7 @@ header .topLiner{
     margin-right: 25px;
     height: 100px;
     width: auto;
-    filter: invert(100%) drop-shadow(4px 4px 2px rgba(0,0,0,0.25));
+    filter: drop-shadow(4px 4px 2px rgba(0,0,0,0.25));
 }
 .aboutInfo{
     display: flex;

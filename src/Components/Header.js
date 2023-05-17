@@ -12,12 +12,12 @@ const Header = () => {
         updateCartQuantity()
     },[cartProducts])
 
-    const slideIn = (String)=>{
-        setSlideContent(String)
+    const slideIn = ()=>{
         const slide = document.getElementById("slide");
         slide.style.left=0;
         slide.style.borderTopRightRadius = "0%";
         slide.style.borderBottomRightRadius = "0%";
+        document.body.classList.add('lock-scroll')
     }
     return (
         <>
@@ -38,9 +38,8 @@ const Header = () => {
                     </label>
                     <ul>
                         <li><Link to="/">Products</Link></li>
-                        <li onClick={()=>{slideIn("About")}}><a>About us</a></li>
+                        <li onClick={()=>{slideIn()}}><a>About us</a></li>
                         <li><a>Contact</a></li>
-                        {/* <li onClick={()=>{slideIn("Contact")}}><a>Contact</a></li> */}
                         <li className='searchBar'>
                             <input type="text" placeholder='Search product by name...' />
                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
