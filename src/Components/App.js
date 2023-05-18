@@ -7,7 +7,7 @@ import ProductDetail from './ProductDetail';
 import LikedProductsContainer from './LikedProductsContainer';
 import CartProductsContainer from './CartProductsContainer';
 import SlideContent from './SlideContent';
-
+import Footer from './Footer';
 function App() {
 
   return (
@@ -21,9 +21,8 @@ function App() {
               <Route path='/product/:productURL' element={<ProductDetail />} />
               <Route path='/products/liked-products' element={<LikedProductsContainer />} />
               <Route path='/products/shopcart' element={<CartProductsContainer />} />
-              {/* <Route path='/' element={<About />} /> */}
-              {/* <Route path='/' element={<Contact />} /> */}
           </Routes>
+          <Footer />
         </BrowserRouter>
       </ContextProvider>
     </>

@@ -6,19 +6,11 @@ import { useContext } from 'react'
 import { context } from './Context'
 
 const Header = () => {
-    const {cartProducts,cartQuantity,setCartQuantity,updateCartQuantity,setSlideContent} = useContext(context)
+    const {cartProducts,cartQuantity,updateCartQuantity,slideIn} = useContext(context)
     
     useEffect(()=>{
         updateCartQuantity()
     },[cartProducts])
-
-    const slideIn = ()=>{
-        const slide = document.getElementById("slide");
-        slide.style.left=0;
-        slide.style.borderTopRightRadius = "0%";
-        slide.style.borderBottomRightRadius = "0%";
-        document.body.classList.add('lock-scroll')
-    }
     return (
         <>
             <header id='headerElement'>

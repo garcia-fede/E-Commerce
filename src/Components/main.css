@@ -6,6 +6,11 @@
     padding: 0;
 }
 
+:root{
+    --primary-color:white;
+    --secondary-color:rgb(248, 126, 45);
+}
+
 /*------------------ Work in progress -------------*/
 .WIP{
     display: flex;
@@ -34,7 +39,7 @@ header{
     width: 100%;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
     position: fixed;
-    background: white;
+    background: var(--primary-color);
     z-index: 10;
     top: 0;
 }
@@ -80,7 +85,7 @@ header nav ul li a{
 header nav ul li a:hover:not(:nth-child(4),:nth-child(5)){
     background:#21212110;
     cursor: pointer;
-    color: rgb(248, 126, 45);
+    color: var(--secondary-color);
 }
 header nav ul li:nth-child(3){
     border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -136,15 +141,15 @@ header nav ul li:nth-child(3){
     padding: 1px;
     width: 15px;
     border-radius: 50%;
-    color: white;
-    border: 1px solid white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
     text-align: center;
 }
 .bounce{
     animation: bounce 0.5s;
     stroke: black;
     stroke-width: 1.5;
-    fill: rgb(248, 126, 45);
+    fill: var(--secondary-color);
 }
 @keyframes bounce {
     0% {
@@ -287,12 +292,12 @@ header .topLiner{
     height: 50px;
 }
 .closeAbout button:hover{
-    background: rgb(248, 126, 45);
+    background: var(--secondary-color);
     cursor: pointer;
     transform: translateX(-15%);
 }
 .closeAbout button:hover svg{
-    stroke: white;
+    stroke: var(--primary-color);
 }
 .aboutContent{
     width: 85%;
@@ -343,7 +348,7 @@ header .topLiner{
     min-width: 75%;
     text-align: center;
     font-size: 48px;
-    color: white;
+    color: var(--primary-color);
     text-transform: uppercase;
     font-family: 'Amiko',sans-serif;
     text-shadow: 4px 4px 2px rgba(0,0,0,0.35);
@@ -428,7 +433,7 @@ header .topLiner{
     margin-right: 15%;
 }
 input[type=checkbox]{
-    accent-color: rgb(248, 126, 45);
+    accent-color: var(--secondary-color);
 }
 .sidebar .option{
     margin-left: 10%;
@@ -448,7 +453,7 @@ input[type=checkbox]{
 }
 .sidebar label:hover{
     cursor: pointer;
-    color: rgb(248, 126, 45);
+    color: var(--secondary-color);
 }
 .productsContainer{
     min-height: 50vh;
@@ -521,7 +526,7 @@ input[type=checkbox]{
 }
 .cardImgContainer .likeButton svg:hover{
     cursor: pointer;
-    fill: rgb(248, 126, 45);
+    fill: var(--secondary-color);
 }
 .cardContent{
     width: 90%;
@@ -569,7 +574,7 @@ input[type=checkbox]{
     cursor: pointer;
 }
 .card .button{
-    background-color: rgb(248, 126, 45);
+    background-color: var(--secondary-color);
     border: none;
 }
 .card .button:hover{
@@ -578,13 +583,13 @@ input[type=checkbox]{
 }
 .card .button:active{
     background: red;
-    color: white;
+    color: var(--primary-color);
 }
 .card .button:hover svg{
     stroke: black;
 }
 .card .button:active svg{
-    stroke: white;
+    stroke: var(--primary-color);
 }
 .card .buttons .button{
     display: flex;
@@ -593,13 +598,131 @@ input[type=checkbox]{
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
     height: 40px;
     padding: 5px 20px;
-    color: white;
+    color: var(--primary-color);
     border-radius: 5px;
     font-weight: 500;
     font-size: 16px;
     letter-spacing: 0.5px;
     font-family: 'Roboto',sans-serif;
     gap: 5px;
+}
+/*-------------------  Footer -------------------*/
+.footerContainer{
+    height: auto;
+    width: 70%;
+    padding: 5vh 15%;
+    background: black;
+    color: var(--primary-color);
+    font-family: 'Roboto',sans-serif;
+}
+.footerContent{
+    display: flex;
+    justify-content: space-between;
+}
+.footerContainer ul{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 40%;
+    list-style: none;
+}
+.footerContent a{
+    color: var(--primary-color);
+}
+.footerContainer button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.footerContainer button:hover{
+    color: black;
+    background: var(--secondary-color);
+    cursor: pointer;
+}
+.footerContainer h3{
+    color: var(--secondary-color);
+}
+.footerContainer li,.footerContainer p{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: fit-content;
+    color: var(--primary-color);
+}
+.footerContainer li:hover,.footerContainer a:hover{
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+.copyright{
+    width: 100%;
+    margin-top: 15px;
+    border-top: 1px solid gray;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+.copyright a{
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.copyright a:hover{
+    color: var(--secondary-color);
+}
+.contactModal{
+    position: fixed;
+    z-index: 99;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modalContent{
+    width: 30%;
+    padding: 45px 5% 25px 5%;
+    height: auto;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    color: black;
+    position: relative;
+}
+.modalContent svg{
+    position: absolute;
+    right: 25px;
+    top: 15px;
+}
+.modalContent svg:hover{
+    cursor: pointer;
+}
+.modalContent h3{
+    color: black;
+    margin: 10px 0;
+}
+.modalContent input,.modalContent span{
+    padding: 5px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.modalContent span{
+    min-height: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+.modalContent button{
+    font-size: 14px;
+    background: black;
+    color: white;
 }
 /*---------------  Product Detail   -------------*/
 .productDetailContainer{
@@ -636,7 +759,7 @@ input[type=checkbox]{
     margin-bottom: 10px;
 }
 .productDetailContainer .productDetail h2{
-    color: rgb(248, 126, 45);
+    color: var(--secondary-color);
     margin-bottom: 20px;
 }
 .productDetailContainer .productDetail h2, .productDetailContainer .productDetail p{
@@ -674,7 +797,7 @@ input[type=checkbox]{
     display: flex;
     align-items: center;
     justify-content: center;
-    stroke: white;
+    stroke: var(--primary-color);
     background: black;
     border-radius: 5px;
 }
@@ -687,10 +810,10 @@ input[type=checkbox]{
     box-sizing: border-box;
 }
 .addButton svg:active, .substractButton svg:active{
-    background: rgb(248, 126, 45);
+    background: var(--secondary-color);
 }
 .productDetailContainer .buttons div svg{
-    stroke: white;
+    stroke: var(--primary-color);
 }
 .productDetailContainer .buttons div .quantityInput{
     width: 50%;
@@ -711,14 +834,14 @@ input[type=checkbox]{
     font-weight: 600;
     border: none;
     border-radius: 5px;
-    color: white;
-    background: rgb(248, 126, 45);
+    color: var(--primary-color);
+    background: var(--secondary-color);
     margin-right: 10px;
 }
 .productDetailContainer .buttons .likeButton{
     border: none;
     width: 40px;
-    background: rgb(248, 126, 45);
+    background: var(--secondary-color);
     border-radius: 5px;
 }
 .productDetailContainer .buttons .likeButton:hover, .productDetailContainer .buttons .likeButton:hover svg{
@@ -733,8 +856,8 @@ input[type=checkbox]{
 }
 .productDetailContainer .buttons .likeButton:active, .productDetailContainer .buttons .likeButton:active svg, .productDetailContainer .buttons .addToCart:active{
     background: red;
-    color: white;
-    stroke: white;
+    color: var(--primary-color);
+    stroke: var(--primary-color);
 }
 .productDetailContainer .productDetail select{
     margin-left: 15px;
@@ -775,7 +898,7 @@ input[type=checkbox]{
     width: 150px;
     padding: 10px 0;
     background: black;
-    color: white;
+    color: var(--primary-color);
     text-transform: uppercase;
     font-weight: 600;
     font-size: 14px;
@@ -790,7 +913,7 @@ input[type=checkbox]{
     cursor: pointer;
 }
 .cartProductsContainer section .messageSection .cartButtons button:active{
-    background: rgb(248, 126, 45);
+    background: var(--secondary-color);
 }
 .cartProductsContainer section .messageSection h2{
     justify-self: end;
@@ -809,7 +932,7 @@ input[type=checkbox]{
     color: rgba(0, 0, 0, 0.75);
 }
 .websitePath span{
-    color: rgb(248, 126, 45);
+    color: var(--secondary-color);
 }
 .sectionTitle{
     width: 70%;
@@ -839,7 +962,7 @@ input[type=checkbox]{
     align-items: center;
     gap: 25px;
     font-family: 'Roboto',sans-serif;
-    border-top: 2px solid rgb(248, 126, 45);
+    border-top: 2px solid var(--secondary-color);
 }
 .messageSection h3{
     font-weight: 400;
@@ -848,10 +971,10 @@ input[type=checkbox]{
     padding: 15px 25px;
     font-family: 'Roboto',sans-serif;
     font-size: 16px;
-    background: rgb(248, 126, 45);
+    background: var(--secondary-color);
     border: none;
     border-radius: 5px;
-    color: white;
+    color: var(--primary-color);
 }
 .returnToProducts button:hover{
     color: black;
@@ -899,10 +1022,10 @@ input[type=checkbox]{
     color: black;
 }
 .likedProduct .productContent a h3:hover, .cartProduct .productContent a h3:hover{
-    color: rgb(248, 126, 45);
+    color: var(--secondary-color);
 }
 .likedProduct .productContent h3, .cartProduct .productContent h3{
-    color: rgb(248, 126, 45);
+    color: var(--secondary-color);
 }
 .cartProduct .quantity{
     display: flex;
@@ -935,7 +1058,7 @@ input[type=checkbox]{
     background-color: black;
     border: none;
     width: 150px;
-    color: white;
+    color: var(--primary-color);
     letter-spacing: 1px;
     text-transform: uppercase;
     border-radius: 5px;
@@ -958,8 +1081,8 @@ input[type=checkbox]{
     font-weight: 600;
     border: none;
     border-radius: 5px;
-    color: white;
-    background: rgb(248, 126, 45);
+    color: var(--primary-color);
+    background: var(--secondary-color);
 }
 .likedProduct .buttons .addToCart:hover, .cartProduct .buttons .addToCart:hover{
     background: lightgray;
@@ -980,7 +1103,7 @@ input[type=checkbox]{
     font-size: 18px;
 }
 .cartProduct .subTotal p{
-    color: rgb(248, 126, 45);
+    color: var(--secondary-color);
     font-weight: 700;
 }
 
@@ -1019,13 +1142,19 @@ input[type=checkbox]{
     }
 }
 
+@media (max-width:1100px){
+    .modalContent{
+        width: 80%;
+        padding: 45px 5% 25px 5%;
+    }
+}
 @media (max-width:925px){
     /*--------- Header ----------*/
     header{
         position: fixed;
         top: 0;
         z-index: 10;
-        background: white;
+        background: var(--primary-color);
         height: 10vh;
         width: 100%;
     }
@@ -1043,7 +1172,7 @@ input[type=checkbox]{
         display: flex;
         flex-direction: column;
         height: auto;
-        background: white;
+        background: var(--primary-color);
         position: absolute;
         top: 10vh;
         width: 0%;
@@ -1123,6 +1252,11 @@ input[type=checkbox]{
     .endOfProducts p{
         padding-bottom: 25px;
     }
+    /*--------- Footer --------------*/
+    .footerContainer ul{
+        min-width: 35%;
+        width: auto;
+    }
     /*--------- Product Detail ---------*/
     .productDetailContainer{
         margin-top: 100px;
@@ -1195,7 +1329,30 @@ input[type=checkbox]{
         margin-bottom: 25px;
         font-family: 'Roboto',sans-serif;
     }
-
+    /*------------- Footer -------------*/
+    .footerContainer{
+        width: 80%;
+        padding: 5vh 10%;
+    }
+    .footerContent{
+        flex-direction: column;
+        gap: 25px;
+        overflow-x: hidden;
+    }
+    .footerContent ul:first-child {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px 0;
+    }
+    .footerContent ul:first-child h3{
+        min-width: 100%;
+    }
+    .footerContent ul:first-child li{
+        min-width: 50%;
+    }
+    .footerContent ul:nth-child(1) li:nth-child(odd){
+        transform: translateX(50px);
+    }
     /*--------- Product Detail ---------*/
     .productDetailContainer{
         margin:0;
@@ -1298,6 +1455,31 @@ input[type=checkbox]{
     .cartProductsContainer section .messageSection{
         font-size: 15px;
     }
+    /*---------- About -------------*/
+    .aboutContainer{
+        width: 95%;
+        padding: 2.5vh 2.5%;
+        height: 95vh;
+    }
+    .closeAbout{
+        width: 15%;
+    }
+    .closeAbout button{
+        width: 50px;
+        aspect-ratio: 1;
+    }
+    .aboutContent{
+        padding: 0;
+    }
+    .aboutInfo{
+        width: inherit;
+    }
+    .aboutInfo h2{
+        font-size: 16px;
+    }
+    .aboutInfo p, .aboutContact li{
+        font-size: 14px;
+    }
 }
 
 @media (max-width:550px){
@@ -1399,30 +1581,5 @@ input[type=checkbox]{
     }
     .returnToProducts{
         margin-left: 10px;
-    }
-    /*---------- About -------------*/
-    .aboutContainer{
-        width: 95%;
-        padding: 2.5vh 2.5%;
-        height: 95vh;
-    }
-    .closeAbout{
-        width: 15%;
-    }
-    .closeAbout button{
-        width: 50px;
-        aspect-ratio: 1;
-    }
-    .aboutContent{
-        padding: 0;
-    }
-    .aboutInfo{
-        width: inherit;
-    }
-    .aboutInfo h2{
-        font-size: 16px;
-    }
-    .aboutInfo p, .aboutContact li{
-        font-size: 14px;
     }
 }

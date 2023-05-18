@@ -32,6 +32,16 @@ const ContextProvider = ({children}) => {
         })
     }
 
+    // Slide About tab
+
+    const slideIn = ()=>{
+        const slide = document.getElementById("slide");
+        slide.style.left=0;
+        slide.style.borderTopRightRadius = "0%";
+        slide.style.borderBottomRightRadius = "0%";
+        document.body.classList.add('lock-scroll')
+    }
+
     // Discard cart products
 
     const discardProducts = ()=>{
@@ -339,6 +349,7 @@ const ContextProvider = ({children}) => {
         setCartQuantity,
         updateCartQuantity,
         discardProducts,
+        slideIn,
         cartTotal,
         cartQuantity,
         cartProducts,
