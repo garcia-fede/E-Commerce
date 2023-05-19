@@ -7,7 +7,7 @@ import { context } from './Context'
 
 const Header = () => {
     const {cartProducts,cartQuantity,updateCartQuantity,slideIn} = useContext(context)
-    
+    const [query,setQuery] = useState("")
     useEffect(()=>{
         updateCartQuantity()
     },[cartProducts])
@@ -31,14 +31,16 @@ const Header = () => {
                     <ul>
                         <li><Link to="/">Products</Link></li>
                         <li onClick={()=>{slideIn()}}><a>About us</a></li>
-                        <li><a>Contact</a></li>
+                        <li><a href='#footer'>Contact</a></li>
                         <li className='searchBar'>
-                            <input type="text" placeholder='Search product by name...' />
-                            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <circle cx="10" cy="10" r="7" />
-                                <line x1="21" y1="21" x2="15" y2="15" />
-                            </svg>
+                            <input type="text" placeholder='Search product by name...' onChange={(e) => setQuery(e.target.value)} />
+                            <Link to={`products/query/${query}`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search" width="25" height="25" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <circle cx="10" cy="10" r="7" />
+                                    <line x1="21" y1="21" x2="15" y2="15" />
+                                </svg>
+                            </Link>
                         </li>
                         <li className='interactContainer'>
                             <Link to="products/liked-products">

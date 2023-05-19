@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { context } from './Context'
+import { toast } from "react-toastify"
 
 const Footer = ()=>{
     const {slideIn} = useContext(context)
@@ -16,6 +17,24 @@ const Footer = ()=>{
         }
     };
     document.addEventListener('keydown', handleKeyPress);
+    const sendMessage = ()=>{
+        let name = document.getElementById("nameMessage")
+        let lastname = document.getElementById("lastnameMessage")
+        let email = document.getElementById("emailMessage")
+        let message = document.getElementById("message")
+        toast.loading("Processing message")
+        setTimeout(()=>{
+        toast.dismiss()
+            setTimeout(()=>{
+                if(name.value!=""&&email.value!=""&&lastname.value!=""&&message.textContent!=""){
+                    toast.success("Message sent!")
+                    setTimeout(setShowModal(false),300)
+                }else{
+                    toast.error("Some of the fields are empty or invalid")
+                }
+            },400)      
+        },2000)
+    }
 
     return (
         <div className='footerContainer' id='footer'>
@@ -43,14 +62,14 @@ const Footer = ()=>{
                                 <path d="M6 6l12 12" />
                             </svg>
                             <h3>Name</h3>
-                            <input type="text" />
+                            <input type="text" id='nameMessage' />
                             <h3>Last name</h3>
-                            <input type="text" />
+                            <input type="text" id='lastnameMessage' />
                             <h3>Email</h3>
-                            <input type="email" />
+                            <input type="email" id='emailMessage' />
                             <h3>Message</h3>
-                            <span role="textbox" contentEditable={true}></span>
-                            <button>SEND</button>
+                            <span role="textbox" contentEditable={true} id='message'></span>
+                            <button onClick={sendMessage}>SEND</button>
                         </div>
                         </div>
                     )}

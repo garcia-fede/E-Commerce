@@ -8,6 +8,9 @@ import LikedProductsContainer from './LikedProductsContainer';
 import CartProductsContainer from './CartProductsContainer';
 import SlideContent from './SlideContent';
 import Footer from './Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SearchResults from './SearchResults';
 function App() {
 
   return (
@@ -21,8 +24,10 @@ function App() {
               <Route path='/product/:productURL' element={<ProductDetail />} />
               <Route path='/products/liked-products' element={<LikedProductsContainer />} />
               <Route path='/products/shopcart' element={<CartProductsContainer />} />
+              <Route path='/products/query/:productQuery' element={<SearchResults />} />
           </Routes>
           <Footer />
+          <ToastContainer />
         </BrowserRouter>
       </ContextProvider>
     </>

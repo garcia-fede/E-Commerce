@@ -107,7 +107,6 @@ header nav ul li:nth-child(3){
     border-radius: 5px;
 }
 .searchBar svg{
-    position: absolute;
     z-index: 2;
     right: 2%;
     transition: 0.2s;
@@ -115,6 +114,11 @@ header nav ul li:nth-child(3){
 .searchBar svg:hover{
     cursor: pointer;
     scale: 1.1;
+}
+.searchBar a{
+    width: 30px;
+    position: absolute;
+    right: 10px;
 }
 .icon{
     width: 25px;
@@ -866,18 +870,21 @@ input[type=checkbox]{
     border-radius: 5px;
     margin-bottom: 10px;
 }
-/*------------Liked & Cart Products---------------------*/
-.likedProductsContainer, .cartProductsContainer{
-    height: auto;
+/*------------Liked, Cart Products & Search results---------------------*/
+.likedProductsContainer, .cartProductsContainer, .searchProductsContainer{
     width: 70%;
     padding: 2.5vh 15%;
+}
+.likedProductsContainer, .cartProductsContainer, .searchProductsContainer{
+    height: auto;
     margin-bottom: 100px;
 }
-.likedProductsContainer{
+.likedProductsContainer,.searchProductsContainer{
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
+
 .cartProductsContainer .messageSection{
     margin-bottom: 25px;
 }
@@ -981,7 +988,7 @@ input[type=checkbox]{
     background: lightgray;
     cursor: pointer;
 }
-.likedProduct, .cartProduct{
+.likedProduct, .cartProduct, .matchProduct{
     font-family: 'Roboto',sans-serif;
     height: 150px;
     width: 100%;
@@ -989,6 +996,9 @@ input[type=checkbox]{
     border: 1px solid rgba(0, 0, 0, 0.06);
     display: grid;
     align-items: center;
+}
+.matchProduct{
+    grid-template-columns: 1fr 4fr 2fr;
 }
 .likedProduct{
     grid-template-columns: 1fr 1fr 4fr 2fr;
@@ -1000,15 +1010,15 @@ input[type=checkbox]{
     width: 40px;
     justify-self: center;
 }
-.likedProduct a, .cartProduct a{
+.likedProduct a, .cartProduct a,.matchProduct a{
     height: inherit;
 }
-.likedProduct a img, .cartProduct a img{
+.likedProduct a img, .cartProduct a img, .matchProduct a img{
     height: inherit;
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
-.likedProduct .productContent, .cartProduct .productContent{
+.likedProduct .productContent, .cartProduct .productContent, .matchProduct .productContent{
     width: 90%;
     padding: 0 5%;
     margin-top: 25px;
@@ -1017,14 +1027,11 @@ input[type=checkbox]{
     flex-direction: column;
     gap: 5px;
 }
-.likedProduct .productContent a, .likedProduct .productContent a h3, .cartProduct .productContent a, .cartProduct .productContent a h3{
+.likedProduct .productContent a, .likedProduct .productContent a h3, .cartProduct .productContent a, .cartProduct .productContent a h3, .matchProduct .productContent a, .matchProduct .productContent a h3{
     text-decoration: none;
     color: black;
 }
-.likedProduct .productContent a h3:hover, .cartProduct .productContent a h3:hover{
-    color: var(--secondary-color);
-}
-.likedProduct .productContent h3, .cartProduct .productContent h3{
+.likedProduct a h3:hover, .cartProduct a h3:hover, .matchProduct a h3:hover{
     color: var(--secondary-color);
 }
 .cartProduct .quantity{
@@ -1040,7 +1047,7 @@ input[type=checkbox]{
     min-width: 30px;
     text-align: center;
 }
-.likedProduct .buttons, .cartProduct .buttons{
+.likedProduct .buttons, .cartProduct .buttons, .matchProduct .buttons{
     width: 100%;
     height: inherit;
     display: flex;
@@ -1051,10 +1058,10 @@ input[type=checkbox]{
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
-.likedProduct .buttons a, .cartProduct .buttons a{
+.likedProduct .buttons a, .cartProduct .buttons a, .matchProduct .buttons a{
     height: auto;
 }
-.likedProduct .button, .cartProduct .button{
+.likedProduct .button, .cartProduct .button, .matchProduct .button{
     background-color: black;
     border: none;
     width: 150px;
@@ -1066,12 +1073,12 @@ input[type=checkbox]{
     height: 40px;
     font-weight: 600;
 }
-.likedProduct .button:hover, .cartProduct .button:hover{
+.likedProduct .button:hover, .cartProduct .button:hover, .matchProduct .button:hover{
     background: lightgray;
     color: black;
     cursor: pointer;
 }
-.likedProduct .buttons .addToCart, .cartProduct .buttons .addToCart{
+.likedProduct .buttons .addToCart, .cartProduct .buttons .addToCart, .matchProduct .buttons .addToCart{
     padding: 5px 10px;
     width: 150px;
     font-size: 14px;
@@ -1084,7 +1091,7 @@ input[type=checkbox]{
     color: var(--primary-color);
     background: var(--secondary-color);
 }
-.likedProduct .buttons .addToCart:hover, .cartProduct .buttons .addToCart:hover{
+.likedProduct .buttons .addToCart:hover, .cartProduct .buttons .addToCart:hover, .matchProduct .buttons .addToCart:hover{
     background: lightgray;
     color: black;
     cursor: pointer;
@@ -1281,7 +1288,7 @@ input[type=checkbox]{
         width: 100%;
     }
     /*--------- Cart & Liked Products ---------*/
-    .likedProductsContainer, .cartProductsContainer{
+    .likedProductsContainer, .cartProductsContainer,.searchProductsContainer{
         width: 85%;
         padding: 0 7.5%;
     }
@@ -1394,8 +1401,8 @@ input[type=checkbox]{
     .productDetailContainer .productDetail div{
         min-width: 30%;
     }
-    /*--------- Cart & Liked Products ---------*/
-    .likedProductsContainer, .cartProductsContainer{
+    /*--------- Cart & Licked Products ---------*/
+    .likedProductsContainer, .cartProductsContainer,.searchProductsContainer{
         width: 90%;
         padding: 0 5%;
     }
@@ -1526,6 +1533,35 @@ input[type=checkbox]{
     .cartProductsContainer section .messageSection{
         font-size: 12px;
     }
+    .matchProduct{
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        width: auto;
+    }
+    .matchProduct a{
+        margin: 0 auto;
+    }
+    .matchProduct a img{
+        max-width: 300px;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .matchProduct .productContent, .matchProduct .buttons{
+        padding: 10px 0;
+        margin: 0 auto;
+        width: auto;
+        border: none;
+    }
+    .matchProduct .productContent{
+        justify-content: center;
+    }
+    .matchProduct .productContent a,.matchProduct .productContent h3,.matchProduct .productContent p{
+        width: fit-content;
+    }
+    .matchProduct .productContent a{
+        margin: 0
+    }
 }
 @media (max-width:450px){
     .card{
@@ -1581,5 +1617,8 @@ input[type=checkbox]{
     }
     .returnToProducts{
         margin-left: 10px;
+    }
+    .matchProduct a img{
+        width: 100%;
     }
 }
